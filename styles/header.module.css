@@ -1,0 +1,40 @@
+.container {
+  --color-primary: #1ac13d;
+  --color-secondary: #1a91c6;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.logo,
+.title {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.title {
+  font-family: 'Titan one', sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.nav {
+  display: flex;
+  justify-self: flex-end;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 3rem;
+}
+
+.listElement {
+  font-family: 'Itim', sans-serif;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+}
