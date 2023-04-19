@@ -13,7 +13,7 @@ export default function Header() {
         alt='logo of Mealweek'
         width={175}
       />
-      <h1 className={styles.title}>
+      {/* <h1 className={styles.title}>
         <span
           style={{
             color: 'var(--color-primary)'
@@ -30,7 +30,7 @@ export default function Header() {
           W
         </span>
         eek
-      </h1>
+      </h1> */}
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li className={styles.listElement}>

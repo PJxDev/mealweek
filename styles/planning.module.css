@@ -5,6 +5,7 @@
   align-items: flex-start;
   gap: 2rem;
   max-width: 100rem;
+  flex-wrap: wrap;
 }
 
 .planningContainer {
@@ -15,6 +16,8 @@
   gap: 2rem;
   padding: 2rem;
   border: 2px solid orange;
+  flex-wrap: wrap;
+  max-width: 1280px;
 }
 .planningCards {
   display: flex;
@@ -22,18 +25,13 @@
   gap: 2rem;
   padding: 2rem;
   border: 2px solid blueviolet;
+  flex-wrap: wrap;
 }
 .planningCards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   border: 2px solid black;
-}
-.planningCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  padding: 2rem;
-  border: 2px solid red;
 }
