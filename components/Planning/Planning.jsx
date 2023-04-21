@@ -1,85 +1,7 @@
 import styles from '@/styles/planning.module.css'
 import PlanningCard from './Cards/PlanningCard'
-
-const data = [
-  {
-    day: 'Monday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Tuesday',
-    lunch: {
-      icon: '🍔',
-      name: 'Hamburguesa'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Wednesday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Thursday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Friday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Saturday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  },
-  {
-    day: 'Sunday',
-    lunch: {
-      icon: '🍕',
-      name: 'Pizza BBQ'
-    },
-    dinner: {
-      icon: '🥩',
-      name: 'Ternera con Verduras'
-    }
-  }
-]
+import ShoppingList from './ShoppingList/ShoppingList'
+import data from '../../examples/planning-data.json'
 
 export default function Planning() {
   return (
@@ -104,6 +26,7 @@ export default function Planning() {
       <article className={styles.planningContainer}>
         <div className={styles.shoppingListContainer}>
           <h2>List</h2>
+          <ShoppingList />
         </div>
         <div className={styles.buttonContainer}>
           <h2>Buttons</h2>

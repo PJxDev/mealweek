@@ -35,3 +35,11 @@
   padding: 2rem;
   border: 2px solid black;
 }
+.shoppingListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 600px;
+}

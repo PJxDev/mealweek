@@ -1,0 +1,79 @@
+[
+  {
+    "day": "Monday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Tuesday",
+    "lunch": {
+      "icon": "🍔",
+      "name": "Hamburguesa"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Wednesday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Thursday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Friday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Saturday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  },
+  {
+    "day": "Sunday",
+    "lunch": {
+      "icon": "🍕",
+      "name": "Pizza BBQ"
+    },
+    "dinner": {
+      "icon": "🥩",
+      "name": "Ternera con Verduras"
+    }
+  }
+]
