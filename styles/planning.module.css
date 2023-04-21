@@ -1,11 +1,10 @@
 .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 2rem;
   max-width: 100rem;
-  flex-wrap: wrap;
 }
 
 .planningContainer {
@@ -18,6 +17,8 @@
   border: 2px solid orange;
   flex-wrap: wrap;
   max-width: 1280px;
+}
+.container article:nth-child(2) {
 }
 .planningCards {
   display: flex;
@@ -42,4 +43,20 @@
   align-items: flex-start;
   gap: 2rem;
   max-width: 600px;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.buttonContainer button {
+  font-size: inherit;
+  font-family: inherit;
+  width: 10rem;
+  line-height: 1.2;
+  padding: 0.7rem;
 }

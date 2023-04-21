@@ -13,31 +13,13 @@ export default function Header() {
         alt='logo of Mealweek'
         width={175}
       />
-      {/* <h1 className={styles.title}>
-        <span
-          style={{
-            color: 'var(--color-primary)'
-          }}
-        >
-          M
-        </span>
-        eal
-        <span
-          style={{
-            color: 'var(--color-secondary)'
-          }}
-        >
-          W
-        </span>
-        eek
-      </h1> */}
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li className={styles.listElement}>
             <Link href='/'>Inicio</Link>
           </li>
           <li className={styles.listElement}>
-            <Link href='/planner-editor'>Planner Editor</Link>
+            <Link href='/plannings'>My Plannings</Link>
           </li>
           <li className={styles.listElement}>
             <Link href='/my-gallery'>My Meals's Gallery</Link>
