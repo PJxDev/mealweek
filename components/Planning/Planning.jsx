@@ -1,21 +1,12 @@
 import styles from '@/styles/planning.module.css'
 import PlanningCard from './Cards/PlanningCard'
 import ShoppingList from './ShoppingList/ShoppingList'
+import Buttons from './Buttons/PlanningButtons'
 import data from '../../examples/planning-data.json'
 import { useState } from 'react'
 
 export default function Planning() {
   const [isEditting, setEditting] = useState(false)
-
-  const handleEdit = () => {
-    if (isEditting) {
-      setEditting(false)
-      return
-    }
-    setEditting(true)
-  }
-
-  const handleDownload = () => {}
 
   return (
     <section className={styles.container}>
@@ -43,10 +34,7 @@ export default function Planning() {
           <ShoppingList />
         </div>
       </article>
-      <div className={styles.buttonContainer}>
-        <button onClick={handleEdit}>Editar</button>
-        <button onClick={handleDownload}>Descargar</button>
-      </div>
+      <Buttons isEditting={isEditting} setEditting={setEditting} />
     </section>
   )
 }

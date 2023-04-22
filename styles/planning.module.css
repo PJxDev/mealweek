@@ -44,19 +44,3 @@
   gap: 2rem;
   max-width: 600px;
 }
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-  align-self: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.buttonContainer button {
-  font-size: inherit;
-  font-family: inherit;
-  width: 10rem;
-  line-height: 1.2;
-  padding: 0.7rem;
-}

@@ -19,7 +19,8 @@
   "eslintConfig": {
     "rules": {
       "no-unused-vars": "warn",
-      "space-before-function-paren": "off"
+      "space-before-function-paren": "off",
+      "multiline-ternary": "off"
     },
     "extends": "standard"
   }

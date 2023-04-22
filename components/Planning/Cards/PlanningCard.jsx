@@ -3,7 +3,7 @@ import styles from '@/styles/planningCard.module.css'
 export default function PlanningCard({ day, lunch, dinner, isEditting }) {
   return (
     <div className={styles.container}>
-      {isEditting ? <p></p> : <p>❗</p>}
+      {isEditting ? <p>❌</p> : <p></p>}
       <h3>{day}</h3>
       <section>
         <h4>Lunch</h4>

@@ -1,6 +1,4 @@
 .container {
-  --color-primary: #1ac13d;
-  --color-secondary: #1a91c6;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
