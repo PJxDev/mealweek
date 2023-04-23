@@ -14,3 +14,8 @@
 .image {
   border-radius: 50%;
 }
+
+.container a {
+  font-family: 'Itim';
+  font-size: 1.5rem;
+}

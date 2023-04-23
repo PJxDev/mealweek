@@ -1,40 +1,48 @@
 [
   {
+    "id": 1,
     "name": "Pollo",
     "quantity": "250",
     "type": "gr"
   },
   {
+    "id": 2,
     "name": "Patatas",
     "quantity": "1.5",
     "type": "kg"
   },
   {
+    "id": 3,
     "name": "Leche",
     "quantity": "1",
     "type": "l"
   },
   {
+    "id": 4,
     "name": "Manzana",
     "quantity": "1",
     "type": "c/u"
   },
   {
+    "id": 5,
     "name": "Ternera",
     "quantity": "300",
     "type": "gr"
   },
   {
+    "id": 6,
     "name": "Aceite",
     "quantity": "1.5",
     "type": "l"
   },
   {
+    "id": 7,
     "name": "Masa para pizza",
     "quantity": "3",
     "type": "c/u"
   },
   {
+    "id": 8,
     "name": "Nata para montar",
     "quantity": "500",
     "type": "ml"

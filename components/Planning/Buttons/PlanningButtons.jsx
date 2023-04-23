@@ -1,5 +1,8 @@
 import styles from '../../../styles/planningButtons.module.css'
-export default function PlanningButtons({ isEditting, setEditting }) {
+import dynamic from 'next/dynamic'
+
+export default function PlanningButtons({ data, isEditting, setEditting }) {
+  const PDFButton = dynamic(() => import('./PDFButton'))
   const handleEdit = () => {
     if (isEditting) {
       setEditting(false)
@@ -16,7 +19,6 @@ export default function PlanningButtons({ isEditting, setEditting }) {
   }
   const handleSave = () => {}
 
-  const handleDownload = () => {}
   return (
     <div className={styles.container}>
       {isEditting ? (
@@ -33,9 +35,7 @@ export default function PlanningButtons({ isEditting, setEditting }) {
           Edit
         </button>
       )}
-      <button className={styles.downloadButton} onClick={handleDownload}>
-        Download
-      </button>
+      <PDFButton data={data} />
     </div>
   )
 }

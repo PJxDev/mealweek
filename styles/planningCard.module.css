@@ -6,3 +6,13 @@
   padding: 2rem;
   border: 2px solid red;
 }
+
+.container h3 {
+  display: inline;
+}
+
+.container p {
+  display: inline;
+  text-align: right;
+  cursor: pointer;
+}

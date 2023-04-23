@@ -8,7 +8,7 @@ export default function ShoppingList() {
         {data &&
           data.map((el) => {
             return (
-              <li className={styles.row}>
+              <li key={el.id} className={styles.row}>
                 <span>&bull; {el.name}</span>
                 <span> ........ </span>
                 <span>{el.quantity}</span>

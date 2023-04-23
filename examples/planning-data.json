@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "day": "Monday",
     "lunch": {
       "icon": "🥗",
@@ -11,6 +12,7 @@
     }
   },
   {
+    "id": 2,
     "day": "Tuesday",
     "lunch": {
       "icon": "🍔",
@@ -22,6 +24,7 @@
     }
   },
   {
+    "id": 3,
     "day": "Wednesday",
     "lunch": {
       "icon": "🍕",
@@ -33,6 +36,7 @@
     }
   },
   {
+    "id": 4,
     "day": "Thursday",
     "lunch": {
       "icon": "🍕",
@@ -44,6 +48,7 @@
     }
   },
   {
+    "id": 5,
     "day": "Friday",
     "lunch": {
       "icon": "🍕",
@@ -55,6 +60,7 @@
     }
   },
   {
+    "id": 6,
     "day": "Saturday",
     "lunch": {
       "icon": "🍕",
@@ -66,6 +72,7 @@
     }
   },
   {
+    "id": 7,
     "day": "Sunday",
     "lunch": {
       "icon": "🍕",
