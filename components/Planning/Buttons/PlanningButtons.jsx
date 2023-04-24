@@ -1,8 +1,14 @@
 import styles from '../../../styles/planningButtons.module.css'
 import dynamic from 'next/dynamic'
 
-export default function PlanningButtons({ data, isEditting, setEditting }) {
-  const PDFButton = dynamic(() => import('./PDFButton'))
+export default function PlanningButtons({
+  refs,
+  data,
+  isEditting,
+  setEditting
+}) {
+  const PDFButton = dynamic(() => import('./PDFButton.jsx'), { ssr: false })
+
   const handleEdit = () => {
     if (isEditting) {
       setEditting(false)
@@ -35,7 +41,7 @@ export default function PlanningButtons({ data, isEditting, setEditting }) {
           Edit
         </button>
       )}
-      <PDFButton data={data} />
+      <PDFButton refs={refs} data={data} />
     </div>
   )
 }
