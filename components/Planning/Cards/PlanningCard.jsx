@@ -25,13 +25,11 @@ const DAYS = [
 
 export default function PlanningCard({
   id,
-  day,
-  lunch,
-  dinner,
   isEditting,
   planningData,
   setPlanningData
 }) {
+  const { day, lunch, dinner } = planningData[id]
   const handleDelete = (e) => {
     const value = [...planningData]
     value[e.target.id - 1].lunch = ''
@@ -41,10 +39,10 @@ export default function PlanningCard({
   const handleAdd = (e) => {
     const value = [...planningData]
     if (e.target.className === 'lunch') {
-      value[e.target.id - 1].lunch = data.lunch
+      value[e.target.id - 1].lunch = lunch
     }
     if (e.target.className === 'dinner') {
-      value[e.target.id - 1].dinner = data.dinner
+      value[e.target.id - 1].dinner = dinner
     }
 
     setPlanningData(value)
@@ -65,8 +63,8 @@ export default function PlanningCard({
             ➕
           </p>
         ) : null}
-        <span>{lunch?.icon}</span>
-        <span>{lunch?.name}</span>
+        <span>{lunch.icon || ''}</span>
+        <span>{lunch.name || ''}</span>
       </section>
       <section>
         <h4>Dinner</h4>
@@ -76,8 +74,8 @@ export default function PlanningCard({
             ➕
           </p>
         ) : null}
-        <span>{dinner?.icon}</span>
-        <span>{dinner?.name}</span>
+        <span>{dinner?.icon || ''}</span>
+        <span>{dinner?.name || ''}</span>
       </section>
     </div>
   )

@@ -27,11 +27,7 @@ export default function Planning() {
               return (
                 <PlanningCard
                   id={el.id}
-                  day={el.day}
-                  lunch={el.lunch}
-                  dinner={el.dinner}
                   isEditting={isEditting}
-                  planningData={planningData}
                   setPlanningData={setPlanningData}
                 />
               )
