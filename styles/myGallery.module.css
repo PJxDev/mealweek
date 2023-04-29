@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 35rem;
+}
+
+.mealBox {
+  border: 2px lime solid;
+  padding: 1rem;
+  max-width: 10rem;
+  text-align: center;
+}

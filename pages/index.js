@@ -1,4 +1,3 @@
-import Header from '@/components/Header/Header'
 import Head from 'next/head'
 import Layout from './layout'
 import Planning from '@/components/Planning/Planning'
