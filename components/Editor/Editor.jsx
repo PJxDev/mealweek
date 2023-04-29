@@ -11,8 +11,53 @@ export default function Planning() {
   const planningRef = useRef()
   const listRef = useRef()
 
+  const initialData = [
+    {
+      id: 1,
+      day: 'Monday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 2,
+      day: 'Tuesday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 3,
+      day: 'Wednesday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 4,
+      day: 'Thursday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 5,
+      day: 'Friday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 6,
+      day: 'Saturday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 7,
+      day: 'Sunday',
+      lunch: '',
+      dinner: ''
+    }
+  ]
+
   useEffect(() => {
-    setPlanningData(data)
+    planningData ?? setPlanningData(initialData)
   }, [])
 
   return (

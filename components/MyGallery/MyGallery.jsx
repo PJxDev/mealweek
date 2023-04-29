@@ -61,19 +61,17 @@ export default function MyGallery({
   const handleMealSelect = (e) => {
     if (!adding.state) return
 
-    console.log(e.currentTarget.id)
-
     const value = [...planningData]
     if (adding.target === 'lunch') {
       value[adding.target_id].lunch = {
-        icon: data[0].icon,
-        name: data[0].name
+        icon: data[e.currentTarget.id - 1].icon,
+        name: data[e.currentTarget.id - 1].name
       }
     }
     if (adding.target === 'dinner') {
       value[adding.target_id].dinner = {
-        icon: data[0].icon,
-        name: data[0].name
+        icon: data[e.currentTarget.id - 1].icon,
+        name: data[e.currentTarget.id - 1].name
       }
     }
 

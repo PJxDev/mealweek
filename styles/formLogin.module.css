@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+.container input {
+  font-size: 2rem;
+  height: 3rem;
+  border: 2px solid black;
+  text-align: center;
+}
+
+.container button {
+  font-size: 2rem;
+  height: 3rem;
+  text-align: center;
+}

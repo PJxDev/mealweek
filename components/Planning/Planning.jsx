@@ -2,7 +2,7 @@ import styles from '@/styles/planning.module.css'
 import PlanningCard from '../Cards/PlanningCard'
 import ShoppingList from './ShoppingList/ShoppingList'
 import Buttons from '../Buttons/PlanningButtons'
-import data from '../../examples/planning-data.json'
+// import data from '../../examples/planning-data.json'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Planning() {
@@ -10,8 +10,54 @@ export default function Planning() {
   const planningRef = useRef()
   const listRef = useRef()
 
+  const initialData = [
+    {
+      id: 1,
+      day: 'Monday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 2,
+      day: 'Tuesday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 3,
+      day: 'Wednesday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 4,
+      day: 'Thursday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 5,
+      day: 'Friday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 6,
+      day: 'Saturday',
+      lunch: '',
+      dinner: ''
+    },
+    {
+      id: 7,
+      day: 'Sunday',
+      lunch: '',
+      dinner: ''
+    }
+  ]
+
   useEffect(() => {
-    setPlanningData(data)
+    planningData ?? setPlanningData(initialData)
+    console.log(planningData)
   }, [])
 
   return (
@@ -24,6 +70,7 @@ export default function Planning() {
           {planningData?.map((el) => {
             return (
               <PlanningCard
+                key={el.id}
                 id={el.id}
                 isEditting={false}
                 planningData={planningData}
