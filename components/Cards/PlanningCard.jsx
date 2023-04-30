@@ -1,84 +1,74 @@
 import styles from '@/styles/planningCard.module.css'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { PlanningContext } from '../Context/planningContext'
 
-const data = {
-  id: 1,
-  day: 'Monday',
-  lunch: {
-    icon: '😁',
-    name: 'not a food'
-  },
-  dinner: {
-    icon: '😋',
-    name: 'neither a food'
-  }
-}
+export default function PlanningCard({ idx: id, data, isEditting }) {
+  const { day, lunch, dinner } = data || ''
+  const { planningData, setPlanningData, setAdding } =
+    useContext(PlanningContext) || ''
 
-const DAYS = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday'
-]
-
-export default function PlanningCard({
-  id,
-  isEditting,
-  planningData,
-  setPlanningData,
-  adding,
-  setAdding
-}) {
   const handleDelete = (e) => {
     const value = [...planningData]
     value[e.target.id].lunch = ''
     value[e.target.id].dinner = ''
-    setPlanningData(value)
+    setPlanningData([...value])
   }
+
   const handleAdd = (e) => {
+    console.log(setAdding)
     setAdding({
       state: true,
       target: e.target.className,
       target_id: e.target.id
     })
   }
-  return (
-    <div className={styles.container}>
-      {isEditting ? (
-        <p id={id - 1} onClick={handleDelete}>
-          ❌
-        </p>
-      ) : null}
-      <h3>{DAYS[id - 1]}</h3>
-      <section>
-        <h4>Lunch</h4>
-        {isEditting &&
-        (planningData[id - 1]?.lunch === null ||
-          planningData[id - 1]?.lunch === '' ||
-          planningData[id - 1]?.lunch === undefined) ? (
-          <p id={id - 1} className='lunch' onClick={handleAdd}>
-            ➕
+
+  if (isEditting) {
+    return (
+      <div className={styles.container}>
+        {lunch !== '' || dinner !== '' ? (
+          <p id={id} onClick={handleDelete}>
+            ❌
           </p>
         ) : null}
-        <span>{planningData[id - 1]?.lunch.icon || ''}</span>
-        <span>{planningData[id - 1]?.lunch.name || ''}</span>
-      </section>
-      <section>
-        <h4>Dinner</h4>
-        {isEditting &&
-        (planningData[id - 1]?.dinner === null ||
-          planningData[id - 1]?.dinner === '' ||
-          planningData[id - 1]?.dinner === undefined) ? (
-          <p id={id - 1} className='dinner' onClick={handleAdd}>
-            ➕
-          </p>
-        ) : null}
-        <span>{planningData[id - 1]?.dinner?.icon || ''}</span>
-        <span>{planningData[id - 1]?.dinner?.name || ''}</span>
-      </section>
-    </div>
-  )
+        <h3>{day}</h3>
+        <section>
+          <h4>Lunch</h4>
+          {lunch === null || lunch === '' || lunch === undefined ? (
+            <button id={id} className='lunch' onClick={handleAdd}>
+              ➕
+            </button>
+          ) : null}
+          <span>{lunch?.icon || ''}</span>
+          <span>{lunch?.name || ''}</span>
+        </section>
+        <section>
+          <h4>Dinner</h4>
+          {dinner === null || dinner === '' || dinner === undefined ? (
+            <button id={id} className='dinner' onClick={handleAdd}>
+              ➕
+            </button>
+          ) : null}
+          <span>{dinner?.icon || ''}</span>
+          <span>{dinner?.name || ''}</span>
+        </section>
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.container}>
+        <h3>{day}</h3>
+        <section>
+          <h4>Lunch</h4>
+          <span>{lunch.icon || ''}</span>
+          <span>{lunch.name || ''}</span>
+        </section>
+        <section>
+          <h4>Dinner</h4>
+          <span>{dinner?.icon || ''}</span>
+          <span>{dinner?.name || ''}</span>
+        </section>
+      </div>
+    )
+  }
 }

@@ -58,14 +58,3 @@
   gap: 2rem;
   max-width: 600px;
 }
-
-.hidden {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 35rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 2;
-}

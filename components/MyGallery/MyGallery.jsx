@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react'
+import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
+import { PlanningContext } from '../Context/PlanningContext'
 
 const data = [
   {
@@ -52,12 +53,10 @@ const data = [
   }
 ]
 
-export default function MyGallery({
-  adding,
-  planningData,
-  setPlanningData,
-  setAdding
-}) {
+export default function MyGallery() {
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
+
   const handleMealSelect = (e) => {
     if (!adding.state) return
 
@@ -75,7 +74,7 @@ export default function MyGallery({
       }
     }
 
-    setPlanningData(value)
+    setPlanningData([...value])
     setAdding({ state: false })
   }
 
@@ -88,9 +87,11 @@ export default function MyGallery({
               <h3>{meal.name}</h3>
               <span>{meal.icon}</span>
               <h6>{meal.composition}</h6>
-              <button id={meal.id} onClick={handleMealSelect}>
-                ⏪
-              </button>
+              {adding.state && (
+                <button id={meal.id} onClick={handleMealSelect}>
+                  ⏪
+                </button>
+              )}
             </article>
           )
         })}
