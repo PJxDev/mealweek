@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export const PlanningContext = createContext()
 
@@ -35,7 +35,6 @@ export default function PlanningProvider({ children }) {
       dinner: ''
     },
     {
-      id: 7,
       day: 'Sunday',
       lunch: '',
       dinner: ''
@@ -43,6 +42,9 @@ export default function PlanningProvider({ children }) {
   ]
   const [planningData, setPlanningData] = useState(initialData)
   const [adding, setAdding] = useState({ state: false })
+  useEffect(() => {
+    console.log('Provider montado')
+  }, [])
 
   return (
     <PlanningContext.Provider

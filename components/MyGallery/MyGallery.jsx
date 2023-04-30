@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
-import { PlanningContext } from '../Context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningContext'
 
 const data = [
   {

@@ -4,10 +4,11 @@ import Buttons from '../Buttons/EditorButtons'
 import MyGallery from '../MyGallery/MyGallery'
 import data from '../../examples/planning-data.json'
 import { useContext, useRef } from 'react'
-import { PlanningContext } from '../Context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningContext'
 
 export default function Planning() {
-  const { planningData, setPlanningData, adding } = useContext(PlanningContext)
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
 
@@ -31,11 +32,7 @@ export default function Planning() {
           <MyGallery adding={adding} setPlanningData={setPlanningData} />
         </div>
       </article>
-      <Buttons
-        refs={{ planning: planningRef, list: listRef }}
-        planningData={planningData}
-        isEditting={true}
-      />
+      <Buttons refs={{ planning: planningRef, list: listRef }} />
     </section>
   )
 }

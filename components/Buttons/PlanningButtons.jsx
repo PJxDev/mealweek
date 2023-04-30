@@ -1,9 +1,12 @@
 import styles from '../../styles/planningButtons.module.css'
 import Router from 'next/router'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { PlanningContext } from '../../context/PlanningContext'
 
-export default function PlanningButtons({ refs, planningData, setEditting }) {
+export default function PlanningButtons({ refs }) {
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
   const PDFButton = dynamic(() => import('./PDFButton.jsx'), { ssr: false })
 
   const handleEdit = () => {

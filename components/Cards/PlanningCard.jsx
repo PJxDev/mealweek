@@ -1,11 +1,11 @@
 import styles from '@/styles/planningCard.module.css'
-import { useContext } from 'react'
-import { PlanningContext } from '../Context/planningContext'
+import { useContext, useEffect } from 'react'
+import { PlanningContext } from '../../context/PlanningContext'
 
 export default function PlanningCard({ idx: id, data, isEditting }) {
   const { day, lunch, dinner } = data || ''
-  const { planningData, setPlanningData, setAdding } =
-    useContext(PlanningContext) || ''
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
 
   const handleDelete = (e) => {
     const value = [...planningData]
@@ -16,11 +16,12 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
 
   const handleAdd = (e) => {
     console.log(setAdding)
-    setAdding({
+    const value = {
       state: true,
       target: e.target.className,
       target_id: e.target.id
-    })
+    }
+    setAdding(value)
   }
 
   if (isEditting) {

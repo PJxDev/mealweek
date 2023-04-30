@@ -2,14 +2,18 @@ import styles from '@/styles/planning.module.css'
 import PlanningCard from '../Cards/PlanningCard'
 import ShoppingList from './ShoppingList/ShoppingList'
 import Buttons from '../Buttons/PlanningButtons'
-import { useContext, useRef } from 'react'
-import { PlanningContext } from '../Context/PlanningContext'
+import { useContext, useEffect, useRef } from 'react'
+import { PlanningContext } from '../../context/PlanningContext'
 
 export default function Planning() {
-  const { planningData } = useContext(PlanningContext)
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
 
+  useEffect(() => {
+    console.log(planningData)
+  }, [])
   return (
     <section ref={planningRef} className={styles.container}>
       <article className={styles.planningContainer}>
