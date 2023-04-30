@@ -11,9 +11,6 @@ export default function Planning() {
   const planningRef = useRef()
   const listRef = useRef()
 
-  useEffect(() => {
-    console.log(planningData)
-  }, [])
   return (
     <section ref={planningRef} className={styles.container}>
       <article className={styles.planningContainer}>

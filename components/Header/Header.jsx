@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from '../../styles/header.module.css'
-import logo from '../../public/logo.svg'
+import logo from '@/assets/img/logo.svg'
 import UserButton from '../UserButton/UserButton'
+import HeaderNav from './HeaderNav'
 
 export default function Header() {
   return (
@@ -12,23 +12,9 @@ export default function Header() {
         src={logo}
         alt='logo of Mealweek'
         width={175}
+        priority={true}
       />
-      <nav className={styles.nav}>
-        <ul className={styles.list}>
-          <li className={styles.listElement}>
-            <Link href='/'>Inicio</Link>
-          </li>
-          <li className={styles.listElement}>
-            <Link href='/plannings'>My Plannings</Link>
-          </li>
-          <li className={styles.listElement}>
-            <Link href='/my-gallery'>My Meals's Gallery</Link>
-          </li>
-          <li className={styles.listElement}>
-            <Link href='/all-meals'>All Meals</Link>
-          </li>
-        </ul>
-      </nav>
+      <HeaderNav />
       <UserButton className='user-button' />
     </header>
   )

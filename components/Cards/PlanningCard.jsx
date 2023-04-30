@@ -15,7 +15,6 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
   }
 
   const handleAdd = (e) => {
-    console.log(setAdding)
     const value = {
       state: true,
       target: e.target.className,

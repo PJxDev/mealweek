@@ -42,9 +42,6 @@ export default function PlanningProvider({ children }) {
   ]
   const [planningData, setPlanningData] = useState(initialData)
   const [adding, setAdding] = useState({ state: false })
-  useEffect(() => {
-    console.log('Provider montado')
-  }, [])
 
   return (
     <PlanningContext.Provider
