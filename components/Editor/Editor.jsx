@@ -1,4 +1,4 @@
-import styles from '@/styles/planning.module.css'
+import styles from '@/styles/editor.module.css'
 import PlanningCard from '../Cards/PlanningCard'
 import Buttons from '../Buttons/EditorButtons'
 import MyGallery from '../MyGallery/MyGallery'

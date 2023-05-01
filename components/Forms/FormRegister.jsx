@@ -1,57 +1,56 @@
 import { useState } from 'react'
-import styles from '@/styles/formLogin.module.css'
+import styles from '@/styles/form.module.css'
 import axios from 'axios'
 
 export default function FormLogin() {
-  const [user, setUser] = useState('')
-  const [pass, setPass] = useState('')
+  const [dataForm, setDataForm] = useState({
+    email: '',
+    username: '',
+    password: ''
+  })
   const [result, setResult] = useState()
 
   const handleChange = (e) => {
-    console.log(user, pass)
-    const newValue = e.target.value
-    switch (e.target.name) {
-      case 'username':
-        setUser(newValue)
-        break
-      case 'password':
-        setPass(newValue)
-        break
-    }
+    const newValue = { ...dataForm, [e.target.name]: e.target.value }
+
+    setDataForm(newValue)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      setResult(
-        await axios.post('/api/login', {
-          username: user,
-          password: pass
-        })
-      )
-    } catch {
-      // TODO
-      setResult({ data: 'Usuario Incorrecto' })
+      const result = await axios.post('/api/register', dataForm)
+      setResult(result)
+    } catch (e) {
+      console.error(e)
+      setResult({ data: 'Hubo un error enviando la petición al servidor' })
     }
   }
 
   return (
     <form className={styles.container} method='POST' onSubmit={handleSubmit}>
       <input
+        type='email'
+        name='email'
+        placeholder='email'
+        value={dataForm.email}
+        onChange={handleChange}
+      />
+      <input
         type='text'
         name='username'
         placeholder='usuario'
-        value={user}
+        value={dataForm.username}
         onChange={handleChange}
       />
       <input
         type='password'
         name='password'
         placeholder='password'
-        value={pass}
+        value={dataForm.password}
         onChange={handleChange}
       />
-      <button>send</button>
+      <button>Register</button>
       {result && <h2>{`${result.data}`}</h2>}
     </form>
   )

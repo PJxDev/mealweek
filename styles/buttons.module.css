@@ -16,15 +16,10 @@
   color: #fff;
 }
 
-.editButton {
+.blueButton {
   background-color: var(--color-secondary);
 }
-.cancelButton {
-  background-color: rgb(236, 57, 57);
-}
-.saveButton {
-  background-color: var(--color-secondary);
-}
-.downloadButton {
+
+.greenButton {
   background-color: var(--color-primary);
 }

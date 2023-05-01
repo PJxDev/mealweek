@@ -1,4 +1,4 @@
-import styles from '../../styles/planningButtons.module.css'
+import styles from '../../styles/buttons.module.css'
 import Router from 'next/router'
 import dynamic from 'next/dynamic'
 import { useContext } from 'react'
@@ -15,7 +15,7 @@ export default function PlanningButtons({ refs }) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.editButton} onClick={handleEdit}>
+      <button className={styles.blueButton} onClick={handleEdit}>
         Go Editor
       </button>
       <PDFButton refs={refs} data={planningData} />

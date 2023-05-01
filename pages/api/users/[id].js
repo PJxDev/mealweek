@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
 async function getUser({ req, res }) {
   const [[result]] = await pool.query(
-    'SELECT * FROM users_login_table WHERE user_id=?',
+    'SELECT * FROM users WHERE user_id=?',
     req.query.id
   )
   const { user_id: userId, username, password } = result
@@ -22,10 +22,7 @@ async function getUser({ req, res }) {
 }
 
 async function deleteUser({ req, res }) {
-  await pool.query(
-    'DELETE FROM users_login_table WHERE user_id=?',
-    req.query.id
-  )
+  await pool.query('DELETE FROM users WHERE user_id=?', req.query.id)
 
   return res?.status(200).json({ greetings: 'Usuario eliminado' })
 }
@@ -33,7 +30,7 @@ async function deleteUser({ req, res }) {
 async function modifyUser({ req, res }) {
   try {
     const [[result]] = await pool.query(
-      'SELECT * FROM users_login_table WHERE user_id = ?',
+      'SELECT * FROM users WHERE user_id = ?',
       req.query.id
     )
     if (result.length === 0) throw new Error()
@@ -44,7 +41,7 @@ async function modifyUser({ req, res }) {
     }
 
     await pool.query(
-      'UPDATE users_login_table SET username = ?, password = ? WHERE user_id = ?',
+      'UPDATE users SET username = ?, password = ? WHERE user_id = ?',
       [newUser.username, newUser.password, req.query.id]
     )
 

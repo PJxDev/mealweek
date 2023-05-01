@@ -1,57 +1,8 @@
 import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
 import { PlanningContext } from '../../context/PlanningContext'
-
-const data = [
-  {
-    id: 1,
-    name: 'Pollo con patatas',
-    icon: '🍗',
-    composition: 'carne'
-  },
-  {
-    id: 2,
-    name: 'Ensalada César',
-    icon: '🥗',
-    composition: 'verduras, huevo, queso'
-  },
-  {
-    id: 3,
-    name: 'Solomillo de vaca con verduras salteadas',
-    icon: '🥩',
-    composition: 'carne, verduras'
-  },
-  {
-    id: 4,
-    name: 'Crema de verduras',
-    icon: '🥣',
-    composition: 'verduras, lactosa'
-  },
-  {
-    id: 5,
-    name: 'Huevos fritos con pisto',
-    icon: '🍳',
-    composition: 'huevo, verduras'
-  },
-  {
-    id: 6,
-    name: 'Potaje de garbanzos',
-    icon: '🍲',
-    composition: 'carne, verduras'
-  },
-  {
-    id: 7,
-    name: 'Pizza carbonara',
-    icon: '🍕',
-    composition: 'gluten, carne, lactosa'
-  },
-  {
-    id: 8,
-    name: 'Guisantes con jamón',
-    icon: '🍽',
-    composition: 'verduras, carne'
-  }
-]
+import data from '@/examples/my-gallery.json'
+import Buttons from '../Buttons/MyGalleryButtons'
 
 export default function MyGallery() {
   const { planningData, setPlanningData, adding, setAdding } =
@@ -95,6 +46,7 @@ export default function MyGallery() {
             </article>
           )
         })}
+      <Buttons />
     </div>
   )
 }

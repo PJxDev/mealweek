@@ -31,20 +31,13 @@
 
 .planningCards {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2rem;
   padding: 2rem;
   border: 2px solid blueviolet;
   flex-wrap: wrap;
 }
-.planningCards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  border: 2px solid black;
-}
+
 .shoppingListContainer {
   display: flex;
   flex-direction: column;

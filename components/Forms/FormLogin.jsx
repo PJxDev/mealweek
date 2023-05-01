@@ -1,36 +1,27 @@
 import { useState } from 'react'
-import styles from '@/styles/formLogin.module.css'
+import styles from '@/styles/form.module.css'
 import axios from 'axios'
+import Link from 'next/link'
+
+// TODO: CONTROLAR INPUTS
 
 export default function FormLogin() {
-  const [user, setUser] = useState('')
-  const [pass, setPass] = useState('')
+  const [dataForm, setDataForm] = useState({
+    username: '',
+    password: ''
+  })
   const [result, setResult] = useState()
 
   const handleChange = (e) => {
-    console.log(user, pass)
-    const newValue = e.target.value
-    switch (e.target.name) {
-      case 'username':
-        setUser(newValue)
-        break
-      case 'password':
-        setPass(newValue)
-        break
-    }
+    const newValue = { ...dataForm, [e.target.name]: e.target.value }
+    setDataForm(newValue)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      setResult(
-        await axios.post('/api/login', {
-          username: user,
-          password: pass
-        })
-      )
+      setResult(await axios.post('/api/login', dataForm))
     } catch {
-      // TODO
       setResult({ data: 'Usuario Incorrecto' })
     }
   }
@@ -41,18 +32,21 @@ export default function FormLogin() {
         type='text'
         name='username'
         placeholder='usuario'
-        value={user}
+        value={dataForm.username}
         onChange={handleChange}
       />
       <input
         type='password'
         name='password'
         placeholder='password'
-        value={pass}
+        value={dataForm.password}
         onChange={handleChange}
       />
-      <button>send</button>
+      <button>Log in</button>
       {result && <h2>{`${result.data}`}</h2>}
+      <Link className={styles.link} href='/register '>
+        or register here!
+      </Link>
     </form>
   )
 }
