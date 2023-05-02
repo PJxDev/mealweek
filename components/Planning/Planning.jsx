@@ -6,8 +6,14 @@ import { useContext, useEffect, useRef } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
 export default function Planning() {
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
 

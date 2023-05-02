@@ -6,8 +6,14 @@ import FormCreateMeal from '../Forms/FormCreateMeal'
 
 export default function MyGalleryButtons() {
   const [modalShow, setModalShow] = useState(false)
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
 
   const handleCreate = () => {
     setModalShow(true)

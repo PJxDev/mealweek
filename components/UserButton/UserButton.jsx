@@ -1,14 +1,30 @@
 import Image from 'next/image'
 import styles from '../../styles/userButton.module.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Link from 'next/link'
+import { PlanningContext } from '@/context/PlanningContext'
+import Router from 'next/router'
+import axios from 'axios'
 
 export default function UserButton() {
-  const [isUserLogged, setUserLogged] = useState(false)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
+
+  const handleLogout = async () => {
+    setIsLogged(false)
+    await axios.post('/api/logout')
+    Router.push('/')
+  }
 
   return (
     <div className={styles.container}>
-      {isUserLogged ? (
+      {isLogged ? (
         <>
           <h2 className={styles.name}>User</h2>
           <Image
@@ -18,6 +34,7 @@ export default function UserButton() {
             width={50}
             height={50}
           />
+          <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <Link href='/login'>Log in</Link>

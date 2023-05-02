@@ -5,8 +5,14 @@ import { useContext } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
 export default function PlanningButtons({ refs }) {
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const PDFButton = dynamic(() => import('./PDFButton.jsx'), { ssr: false })
 
   const handleEdit = () => {

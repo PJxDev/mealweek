@@ -4,8 +4,14 @@ import { useContext } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
 export default function EditorButtons({ refs }) {
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const handleBack = () => {
     Router.push('/')
   }

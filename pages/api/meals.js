@@ -9,8 +9,6 @@ export default async function handler(req, res) {
   }
 }
 
-// TODO: controlar ingredientes con espacios!!!!
-
 async function createMeals({ req, res }) {
   try {
     const { author, name, description, composition, ingredients } = req?.body

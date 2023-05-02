@@ -1,11 +1,21 @@
-import { useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import styles from '@/styles/form.module.css'
 import axios from 'axios'
 import Link from 'next/link'
+import Router from 'next/router'
+import { PlanningContext } from '@/context/PlanningContext'
 
 // TODO: CONTROLAR INPUTS
 
 export default function FormLogin() {
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const [dataForm, setDataForm] = useState({
     username: '',
     password: ''
@@ -20,7 +30,10 @@ export default function FormLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      setResult(await axios.post('/api/login', dataForm))
+      const value = await axios.post('/api/login', dataForm)
+      setResult(value)
+      Router.push('/')
+      setIsLogged(true)
     } catch {
       setResult({ data: 'Usuario Incorrecto' })
     }

@@ -7,8 +7,14 @@ import { useContext, useRef } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
 export default function Planning() {
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
 
@@ -21,7 +27,7 @@ export default function Planning() {
         <section className={styles.planningCards}>
           {planningData?.map((el, idx) => {
             return (
-              <PlanningCard id={el.id} idx={idx} data={el} isEditting={true} />
+              <PlanningCard key={idx} idx={idx} data={el} isEditting={true} />
             )
           })}
         </section>
