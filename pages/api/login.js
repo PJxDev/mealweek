@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         const token = jwt.sign(
           {
             exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
-            username,
+            username: userBD,
             id: userId
           },
           process.env.PASS_SECRET

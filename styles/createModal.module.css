@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   max-width: 50rem;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 2rem;
   margin: auto;
   border: 2px solid #000;
@@ -67,4 +67,41 @@
   padding: 0.7rem;
   color: #fff;
   background-color: var(--color-primary);
+}
+
+.divRadio {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  max-width: 60%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.radioButton {
+  position: relative;
+  user-select: none;
+}
+
+.radioButton input {
+  user-select: none;
+  appearance: none;
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 6px;
+}
+.radioButton input:checked {
+  visibility: visible;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  border: 2px var(--color-secondary) solid;
 }

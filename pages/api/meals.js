@@ -11,7 +11,8 @@ export default async function handler(req, res) {
 
 async function createMeals({ req, res }) {
   try {
-    const { author, name, description, composition, ingredients } = req?.body
+    const { author, name, icon, description, composition, ingredients } =
+      req?.body
 
     const ingredientsArray = ingredients.split(',').map((el) => {
       const array = el.trim().split(' ')
@@ -32,8 +33,8 @@ async function createMeals({ req, res }) {
     })
 
     const [result] = await pool.query(
-      'INSERT INTO meals (author_id, name, description, composition) VALUES (?, ?, ?, ?)',
-      [author, name, description, composition]
+      'INSERT INTO meals (author_id, name, icon, description, composition) VALUES (?, ?, ?, ?, ?)',
+      [author, name, icon, description, composition]
     )
 
     const [[dataMeal]] = await pool.query(
@@ -90,6 +91,7 @@ async function getMeals({ req, res }) {
         id: row?.meal_id,
         author: row?.author_id,
         name: row?.name,
+        icon: row?.icon,
         description: row?.description,
         composition: row?.composition
       }

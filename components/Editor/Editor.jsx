@@ -6,7 +6,7 @@ import data from '../../examples/planning-data.json'
 import { useContext, useRef } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
-export default function Planning() {
+export default function Editor({ data }) {
   const {
     planningData,
     setPlanningData,
@@ -35,7 +35,7 @@ export default function Planning() {
       <article ref={listRef} id='list' className={styles.planningContainer}>
         <div className={styles.shoppingListContainer}>
           <h2>My Gallery</h2>
-          <MyGallery adding={adding} setPlanningData={setPlanningData} />
+          <MyGallery data={data} />
         </div>
       </article>
       <Buttons refs={{ planning: planningRef, list: listRef }} />
