@@ -14,7 +14,7 @@ async function createMeals({ req, res }) {
     const { author, name, icon, description, composition, ingredients } =
       req?.body
 
-    const ingredientsArray = ingredients.split(',').map((el) => {
+    ingredients.map((el) => {
       const array = el.trim().split(' ')
       // n = name, q = quantity, t = type
       const n = array.splice(0, array.length - 2).join(' ')
@@ -22,13 +22,13 @@ async function createMeals({ req, res }) {
       const t = array[array.length - 1]
       return [n, q, t]
     })
-    const nameArray = ingredientsArray.map((el) => {
+    const nameArray = ingredients.map((el) => {
       return el[0]
     })
-    const quantityArray = ingredientsArray.map((el) => {
+    const quantityArray = ingredients.map((el) => {
       return el[1]
     })
-    const typeArray = ingredientsArray.map((el) => {
+    const typeArray = ingredients.map((el) => {
       return el[2]
     })
 
@@ -42,7 +42,7 @@ async function createMeals({ req, res }) {
       name
     )
 
-    let queryCondition = 'name = ?,'.repeat(ingredientsArray.length).split(',')
+    let queryCondition = 'name = ?,'.repeat(ingredients.length).split(',')
     queryCondition.pop()
     queryCondition = queryCondition.join(' OR ')
 

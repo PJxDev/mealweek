@@ -1,40 +1,29 @@
 import Layout from './layout'
 import styles from '../styles/index.module.css'
 
-export default function Login() {
-  const handleChange = (e) => {
-    console.log(e.target.value)
-  }
+export default function Login({ ingredients }) {
   return (
     <>
       <Layout>
-        <main className={styles.main}>
-          <form>
-            {' '}
-            <label> 😀</label>
-            <input
-              type='radio'
-              name='icon'
-              value='😀'
-              onChange={handleChange}
-            />
-            <label>😁</label>
-            <input
-              type='radio'
-              name='icon'
-              value='😁'
-              onChange={handleChange}
-            />
-            <label>😂</label>
-            <input
-              type='radio'
-              name='icon'
-              value='😂'
-              onChange={handleChange}
-            />
-          </form>
-        </main>
+        <main className={styles.main}></main>
       </Layout>
     </>
   )
 }
+
+// export async function getServerSideProps() {
+//   try {
+//     const result = await fetch('http://localhost:3000/api/ingredients')
+//     const ingredients = await result.json()
+//     return {
+//       props: {
+//         ingredients
+//       }
+//     }
+//   } catch (error) {
+//     console.error(error)
+//     return {
+//       props: {}
+//     }
+//   }
+// }

@@ -4,7 +4,7 @@ import { PlanningContext } from '../../context/PlanningContext'
 import Portal from '../Portal'
 import FormCreateMeal from '../Forms/FormCreateMeal'
 
-export default function MyGalleryButtons() {
+export default function MyGalleryButtons({ ingredients }) {
   const [modalShow, setModalShow] = useState(false)
   const {
     planningData,
@@ -26,7 +26,10 @@ export default function MyGalleryButtons() {
       </button>
       {modalShow ? (
         <Portal>
-          <FormCreateMeal setModalshow={setModalShow} />
+          <FormCreateMeal
+            setModalshow={setModalShow}
+            ingredients={ingredients}
+          />
         </Portal>
       ) : null}
     </div>

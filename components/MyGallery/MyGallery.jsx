@@ -5,7 +5,7 @@ import { PlanningContext } from '../../context/PlanningContext'
 import Buttons from '../Buttons/MyGalleryButtons'
 import axios from 'axios'
 
-export default function MyGallery({ data }) {
+export default function MyGallery({ data, ingredients }) {
   const {
     planningData,
     setPlanningData,
@@ -62,7 +62,7 @@ export default function MyGallery({ data }) {
             )
           })}
       </section>
-      <Buttons />
+      <Buttons ingredients={ingredients} />
     </div>
   )
 }
