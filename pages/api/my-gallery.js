@@ -10,18 +10,28 @@ export default async function handler(req, res) {
 async function getMeals({ req, res }) {
   const { userId } = req.body
   const [rows] = await pool.query(
-    'SELECT favs_meals.meal_id, name, icon, composition FROM favs_meals INNER JOIN meals ON meals.meal_id=favs_meals.meal_id WHERE favs_meals.user_id=?',
+    'SELECT F.meal_id, M.name as mealName, M.icon, M.composition, I.name as ingredientName, SL.quantity, SL.type FROM meals as M INNER JOIN shopping_list as SL ON M.meal_id=SL.meal_id INNER JOIN ingredients as I ON SL.ingredient_id=I.ingredients_id INNER JOIN favs_meals as F ON M.meal_id=F.meal_id WHERE F.user_id=?',
     userId
   )
 
-  return res?.status(200).json(
-    rows.map((row) => {
-      return {
-        id: row?.meal_id,
-        name: row?.name,
-        icon: row?.icon,
-        composition: row?.composition
+  const meals = {}
+  rows.forEach((row) => {
+    if (!meals[row.meal_id]) {
+      meals[row.meal_id] = {
+        id: row.meal_id,
+        name: row.mealName,
+        icon: row.icon,
+        composition: row.composition,
+        ingredients: []
       }
+    }
+    meals[row.meal_id].ingredients.push({
+      name: row.ingredientName,
+      quantity: row.quantity,
+      type: row.type
     })
-  )
+  })
+  const result = Object.values(meals)
+
+  return res?.status(200).json(result)
 }

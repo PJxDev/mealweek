@@ -1,4 +1,4 @@
-import { pool } from '../../../config/database'
+import { pool } from '../../config/database'
 import bcrypt from 'bcrypt'
 
 export default async function handler(req, res) {
@@ -15,7 +15,7 @@ async function createUser({ req, res }) {
 
   const hashedPass = encryptPassword(password)
 
-  const [result] = await pool.query('INSERT INTO users_login_table SET ?', {
+  const [result] = await pool.query('INSERT INTO users SET ?', {
     username,
     password: hashedPass
   })
@@ -23,7 +23,7 @@ async function createUser({ req, res }) {
 }
 
 async function getUsers({ req, res }) {
-  const [rows] = await pool.query('SELECT * FROM users_login_table')
+  const [rows] = await pool.query('SELECT * FROM users')
 
   return res?.status(200).json(
     rows.map((row) => {

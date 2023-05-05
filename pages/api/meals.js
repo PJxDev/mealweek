@@ -14,21 +14,23 @@ async function createMeals({ req, res }) {
     const { author, name, icon, description, composition, ingredients } =
       req?.body
 
-    ingredients.map((el) => {
+    const arrayIngredients = ingredients.map((el) => {
+      console.log(ingredients)
       const array = el.trim().split(' ')
       // n = name, q = quantity, t = type
-      const n = array.splice(0, array.length - 2).join(' ')
       const q = array[array.length - 2]
       const t = array[array.length - 1]
+      const n = array.splice(0, array.length - 2).join(' ')
       return [n, q, t]
     })
-    const nameArray = ingredients.map((el) => {
+    const nameArray = arrayIngredients.map((el) => {
       return el[0]
     })
-    const quantityArray = ingredients.map((el) => {
+    console.log(nameArray)
+    const quantityArray = arrayIngredients.map((el) => {
       return el[1]
     })
-    const typeArray = ingredients.map((el) => {
+    const typeArray = arrayIngredients.map((el) => {
       return el[2]
     })
 
@@ -47,17 +49,25 @@ async function createMeals({ req, res }) {
     queryCondition = queryCondition.join(' OR ')
 
     const [dataIngredients] = await pool.query(
-      `SELECT ingredients_id FROM ingredients WHERE ${queryCondition}`,
+      `SELECT ingredients_id, name FROM ingredients WHERE ${queryCondition}`,
       nameArray
     )
 
-    queryCondition = '(?), '.repeat(dataIngredients.length).split(',')
+    const dataIngredientsSorted = dataIngredients.sort((a, b) => {
+      return nameArray.indexOf(a.name) - nameArray.indexOf(b.name)
+    })
+
+    queryCondition = '(?), '.repeat(dataIngredientsSorted.length).split(',')
     queryCondition.pop()
     queryCondition = queryCondition.join(',')
 
     const [result2] = await pool.query(
       `INSERT INTO shopping_list (meal_id, ingredient_id, quantity, type) VALUES ${queryCondition}`,
-      dataIngredients.map((el, idx) => {
+      dataIngredientsSorted.map((el, idx) => {
+        console.log(idx, nameArray[idx])
+        console.log(idx, el.ingredients_id)
+        console.log(idx, quantityArray[idx])
+        console.log(idx, typeArray[idx])
         return [
           dataMeal.meal_id,
           el.ingredients_id,

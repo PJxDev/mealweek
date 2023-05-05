@@ -30,7 +30,7 @@ export default function FormLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const value = await axios.post('/api/login', dataForm)
+      const value = await axios.post('/api/auth/login', dataForm)
       setResult(value)
       Router.push('/')
       setIsLogged(true)

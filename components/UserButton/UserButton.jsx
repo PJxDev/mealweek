@@ -18,7 +18,7 @@ export default function UserButton() {
 
   const handleLogout = async () => {
     setIsLogged(false)
-    await axios.post('/api/logout')
+    await axios.post('/api/auth/logout')
     Router.push('/')
   }
 

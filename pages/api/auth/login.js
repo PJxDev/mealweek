@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { pool } from '../../config/database'
+import { pool } from '../../../config/database'
 import bcrypt from 'bcrypt'
 import { serialize } from 'cookie'
 

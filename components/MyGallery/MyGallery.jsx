@@ -29,13 +29,15 @@ export default function MyGallery({ data, ingredients }) {
     if (adding.target === 'lunch') {
       value[adding.target_id].lunch = {
         icon: meal.icon,
-        name: meal.name
+        name: meal.name,
+        ingredients: meal.ingredients
       }
     }
     if (adding.target === 'dinner') {
       value[adding.target_id].dinner = {
         icon: meal.icon,
-        name: meal.name
+        name: meal.name,
+        ingredients: meal.ingredients
       }
     }
 

@@ -13,10 +13,11 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
   })
   const dialog = useRef()
 
-  // Formato de ingredientes: [[sal, 2, gr],[Aceite de Oliva, 20, ml]] => "sal 2 gr, Aceite de Oliva 20 ml"
+  // Formato de ingredientes: [sal 2 gr,Aceite de Oliva 20 ml] => "sal 2 gr, Aceite de Oliva 20 ml"
   // Formato de composition: [carne, pescado, lactosa] => "carne, pescado, lactosa"
 
   const [result, setResult] = useState()
+  const [composition, setComposition] = useState([])
   const [finalIngredients, setFinalIngredients] = useState([])
   const [ingredientValue, setIngredientValue] = useState({
     ingredient: '',
@@ -27,31 +28,55 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
   const [dataChanged, setDataChanged] = useState(true)
 
   const typeArray = ['c/u', 'kg', 'g', 'l', 'ml']
+  const compArray = [
+    '',
+    'meat',
+    'fish',
+    'eggs',
+    'dairy',
+    'gluten',
+    'crustaceans',
+    'peanuts',
+    'soya',
+    'nuts',
+    'celery',
+    'mustard',
+    'sesame',
+    'sulphites',
+    'lupins',
+    'molluscs'
+  ]
 
   // Funciones para el dialog de ingredientes
-  const handleResultIngredients = (e) => {
-    const value = [
-      ...finalIngredients,
-      `${ingredientValue.ingredient} ${ingredientValue.quantity} ${ingredientValue.type}`
-    ]
-    setFinalIngredients(value)
-  }
 
   const handleChangeIngredients = (e) => {
+    if (e.target.name === 'quantity') {
+      if (e.target.value < 0) {
+        e.target.value = 0
+      }
+    }
     const value = { ...ingredientValue, [e.target.name]: e.target.value }
     setIngredientValue(value)
   }
 
-  const handleSubmitIngredients = (e) => {
+  const handleSubmitIngredients = async (e) => {
     e.preventDefault()
     dialog.current.close()
-    handleResultIngredients()
+    const value = [...finalIngredients]
+    value.push(
+      `${ingredientValue.ingredient} ${ingredientValue.quantity} ${ingredientValue.type}`
+    )
+    setFinalIngredients(value)
+    const newValue = { ...dataForm, ingredients: value }
+    setDataForm(newValue)
   }
 
   const handleDeleteIngredient = () => {
     const value = [...finalIngredients]
     value.pop()
     setFinalIngredients(value)
+    const newValue = { ...dataForm, ingredients: value }
+    setDataForm(newValue)
   }
 
   const openModalIngredients = () => dialog.current.showModal()
@@ -61,26 +86,65 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
     const fetchData = async () => {
       const data = await axios.get('/api/ingredients')
       setListIngredients(data.data)
-      console.log(data.data)
     }
 
     fetchData()
     setDataChanged(false)
   }, [dataChanged])
 
+  const handleCreateIngredient = async () => {
+    const value = [...listIngredients]
+
+    try {
+      const newValue = window.prompt('Introduzca el nombre del ingrediente:')
+      console.log(newValue)
+      if (!newValue) {
+        throw new Error('Se canceló la creación del ingrediente')
+      }
+      await axios.post('/api/ingredients', { name: newValue })
+      value.push(newValue)
+      setListIngredients([...value])
+      setDataChanged(true)
+    } catch (error) {
+      console.log(error)
+      window.alert(
+        'Ha ocurrido un error o se ha cancelado la creación del ingrediente.'
+      )
+    }
+  }
+
+  // Funciones para el composition
+
+  const handleDeleteComposition = (e) => {
+    const value = [...composition]
+    value.pop()
+    setComposition(value)
+    const newValue = { ...dataForm, composition: value.join(', ') }
+    setDataForm(newValue)
+  }
+  const handleChangeComposition = (e) => {
+    const value = [...composition]
+    const compElement = e.target.value
+    if (
+      value.filter((el) => el === compElement).length > 0 ||
+      compElement !== ''
+    ) {
+      value.push(compElement)
+      setComposition(value)
+      const newValue = { ...dataForm, composition: value.join(', ') }
+      setDataForm(newValue)
+    }
+  }
+
   // Funciones para el resto del form
   const handleChange = (e) => {
-    if (e.target.name === 'composition') {
-      e.target.value = e.target.value.toLowerCase()
-    }
     const newValue = { ...dataForm, [e.target.name]: e.target.value }
     setDataForm(newValue)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newValue = { ...dataForm, ingredients: finalIngredients }
-    setDataForm(newValue)
+    console.log(dataForm)
     try {
       const result = await axios.post('/api/meals', dataForm)
       setResult(result)
@@ -410,48 +474,47 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
         value={dataForm.description}
         onChange={handleChange}
       />
-      <label htmlFor='ingredients'>
-        Introduzca la composición separada por comas: carne, lactosa, pescado
-        ...
-        <input
-          type='text'
-          name='composition'
-          placeholder='composition ...'
-          value={dataForm.composition}
-          onChange={handleChange}
-        />
+      <label htmlFor='composition' className={styles.composition}>
+        {composition.length !== 0 ? null : 'Composition and/or Allergens'}
+        <select onChange={handleChangeComposition}>
+          {compArray &&
+            compArray.map((el) => {
+              return <option>{el}</option>
+            })}
+        </select>
       </label>
-      <label htmlFor='ingredients'>
-        Ingredientes
-        {/* <input
-        type='text'
-        name='ingredients'
-        placeholder='ingredients ...'
-        value={dataForm.password}
-        onChange={handleChange}
-        required
-      /> */}
-        <dialog ref={dialog}>
-          <form>
-            <div>
-              <label>
-                Ingredients:
+      {composition.length !== 0 ? (
+        <output className={styles.outputComposition}>
+          {composition.join(', ')}
+          <button type='button' onClick={handleDeleteComposition}>
+            &#215;
+          </button>
+        </output>
+      ) : null}
+      <label htmlFor='ingredient' className={styles.labelIngredient}>
+        Ingredients
+        <div className={styles.dialogContainer}>
+          <dialog ref={dialog} className={styles.dialog}>
+            <div className={styles.dialogInputs}>
+              <label htmlFor='ingredient'>
                 <select name='ingredient' onChange={handleChangeIngredients}>
-                  <option value='default'>Choose…</option>
+                  <option value='default'>ingredients...</option>
                   {listIngredients &&
                     listIngredients.map((el) => {
                       return <option>{el.name}</option>
                     })}
                 </select>
-                <input
-                  name='quantity'
-                  type='number'
-                  min={0}
-                  placeholder='0'
-                  onChange={handleChangeIngredients}
-                />
+              </label>
+              <input
+                name='quantity'
+                type='number'
+                min={0}
+                placeholder='quantity'
+                onChange={handleChangeIngredients}
+              />
+              <label htmlFor='type'>
                 <select name='type' onChange={handleChangeIngredients}>
-                  <option value='default'>Choose…</option>
+                  <option value='default'>choose...</option>
                   {typeArray &&
                     typeArray.map((el) => {
                       return <option>{el}</option>
@@ -459,54 +522,47 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
                 </select>
               </label>
             </div>
-            <div>
-              <button
-                formMethod='dialog'
-                value={ingredientValue}
-                onClick={handleSubmitIngredients}
-              >
-                Add
+            <div className={styles.dialogButtons}>
+              <button value={ingredientValue} onClick={handleSubmitIngredients}>
+                Add to Form
+              </button>
+              <button type='button' onClick={handleCreateIngredient}>
+                Create Ingredient
+              </button>
+              <button type='button' onClick={closeModalIngredients}>
+                Cancel
               </button>
             </div>
-          </form>
-          <button
-            onClick={async () => {
-              const value = [...listIngredients]
-
-              try {
-                const newValue = window.prompt(
-                  'Introduzca el nombre del ingrediente:'
-                )
-                console.log(newValue)
-                if (!newValue) {
-                  throw new Error('Se canceló la creación del ingrediente')
-                }
-                await axios.post('/api/ingredients', { name: newValue })
-                value.push(newValue)
-                setListIngredients([...value])
-                setDataChanged(true)
-              } catch (error) {
-                console.log(error)
-                window.alert(
-                  'Ha ocurrido un error o se ha cancelado la creación del ingrediente.'
-                )
-              }
-            }}
-          >
-            Create Ingredient
+          </dialog>
+        </div>
+        <output className={styles.outputIngredients}>
+          <ul>
+            {finalIngredients.map((el) => {
+              return <li>{el}</li>
+            })}
+          </ul>
+        </output>
+        <div className={styles.ingredientButtons}>
+          <button type='button' onClick={openModalIngredients}>
+            &#43;
           </button>
-          <button onClick={closeModalIngredients}>Cancelar</button>
-        </dialog>
-        <button onClick={openModalIngredients}>Añadir Ingrediente</button>
-        <button onClick={handleDeleteIngredient}>Eliminar Último</button>
-        <output>{finalIngredients.join(', ')}</output>
+          {finalIngredients.length !== 0 ? (
+            <button type='button' onClick={handleDeleteIngredient}>
+              &#215;
+            </button>
+          ) : null}
+        </div>
       </label>
+      {result && <h5>{`${result.data}`}</h5>}
       <div className={styles.buttons}>
-        {result && <h2>{`${result.data}`}</h2>}
         <button type='submit' className={styles.greenButton}>
           Create
         </button>
-        <button className={styles.redButton} onClick={handleCancel}>
+        <button
+          type='button'
+          className={styles.redButton}
+          onClick={handleCancel}
+        >
           Cancel
         </button>
       </div>

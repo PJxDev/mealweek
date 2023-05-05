@@ -19,7 +19,7 @@ export default function FormLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const result = await axios.post('/api/register', dataForm)
+      const result = await axios.post('/api/auth/register', dataForm)
       setResult(result)
     } catch (e) {
       console.error(e)
