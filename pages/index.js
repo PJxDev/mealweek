@@ -3,10 +3,10 @@ import Layout from './layout'
 import Planning from '@/components/Planning/Planning'
 import styles from '../styles/index.module.css'
 import { verify } from 'jsonwebtoken'
-import PlanningContext from '@/context/PlanningContext'
-import { useContext } from 'react'
+import useCookieData from '@/hooks/useCookieData'
 
 export default function Home({ userData }) {
+  useCookieData(userData)
   return (
     <>
       <Head>
@@ -17,7 +17,7 @@ export default function Home({ userData }) {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <Planning userData={userData} />
+          <Planning />
         </main>
       </Layout>
     </>

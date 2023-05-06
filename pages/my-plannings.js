@@ -2,6 +2,9 @@ import Layout from './layout'
 import styles from '../styles/index.module.css'
 import ListPlannings from '@/components/ListPlannings/ListPlannings'
 import { verify } from 'jsonwebtoken'
+import { useContext, useEffect } from 'react'
+import PlanningContext from '@/context/PlanningContext'
+import axios from 'axios'
 
 export default function MyPlannings({ myPlannings }) {
   return (
