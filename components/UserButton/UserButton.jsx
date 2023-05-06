@@ -5,8 +5,9 @@ import Link from 'next/link'
 import Router from 'next/router'
 import axios from 'axios'
 import PlanningContext from '@/context/PlanningContext'
+import { verify } from 'jsonwebtoken'
 
-export default function UserButton() {
+export default function UserButton({ username }) {
   const {
     planningData,
     setPlanningData,
@@ -29,7 +30,7 @@ export default function UserButton() {
     <div className={styles.container}>
       {isLogged ? (
         <>
-          <h2 className={styles.name}>User</h2>
+          <h2 className={styles.name}>User {authorId}</h2>
           <Image
             className={styles.image}
             src='https://picsum.photos/50/'

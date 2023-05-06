@@ -32,11 +32,12 @@ export default function Editor({ data }) {
           <h2>Editor</h2>
         </header>
         <section className={styles.planningCards}>
-          {planningData?.map((el, idx) => {
-            return (
-              <PlanningCard key={idx} idx={idx} data={el} isEditting={true} />
-            )
-          })}
+          {Array.isArray(planningData) &&
+            planningData?.map((el, idx) => {
+              return (
+                <PlanningCard key={idx} idx={idx} data={el} isEditting={true} />
+              )
+            })}
         </section>
       </article>
       <article ref={listRef} id='list' className={styles.planningContainer}>

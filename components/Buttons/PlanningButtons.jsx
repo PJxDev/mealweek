@@ -24,22 +24,13 @@ export default function PlanningButtons({ refs }) {
   const handleEdit = () => {
     Router.push('/editor')
   }
-  const handleSave = async () => {
-    console.log({ planningData })
-    const result = await axios.post('/api/plannings', {
-      authorId,
-      planningJson: JSON.stringify({ planningData })
-    })
-  }
 
   return (
     <div className={styles.container}>
       <button className={styles.blueButton} onClick={handleEdit}>
         Go Editor
       </button>
-      <button className={styles.greenButton} onClick={handleSave}>
-        Save Planning
-      </button>
+
       <PDFButton refs={refs} data={planningData} />
     </div>
   )

@@ -42,7 +42,7 @@ const PlanningProvider = ({ children }) => {
   const [planningData, setPlanningData] = useState(initialData)
   const [adding, setAdding] = useState({ state: false })
   const [isLogged, setIsLogged] = useState(false)
-  const [authorId, setAuthorId] = useState(null)
+  const [authorId, setAuthorId] = useState()
   const [favs, setFavs] = useState([])
 
   return (

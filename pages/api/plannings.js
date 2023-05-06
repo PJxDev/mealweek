@@ -31,13 +31,13 @@ async function getPlannings({ req, res }) {
   const { authorId } = req?.body
   try {
     const [rows] = await pool.query(
-      'SELECT plan FROM plannings WHERE user_id = ? ORDER BY time',
+      'SELECT * FROM plannings WHERE user_id = ? ORDER BY time',
       authorId
     )
 
     return res?.status(200).json(
       rows.flatMap((row) => {
-        return row?.plan.planningData
+        return [{ id: row?.planning_id, plan: row?.plan.planningData }]
       })
     )
   } catch (error) {

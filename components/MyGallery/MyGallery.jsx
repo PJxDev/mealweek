@@ -93,9 +93,6 @@ export default function MyGallery({ data, ingredients }) {
           data.map((meal) => {
             return (
               <article key={meal.id} className={styles.mealBox}>
-                <h3>{meal.name}</h3>
-                <span>{meal.icon}</span>
-                <h6>{meal.composition}</h6>
                 {favs &&
                   adding.state === false &&
                   (favs.includes(meal.id) ? (
@@ -115,6 +112,9 @@ export default function MyGallery({ data, ingredients }) {
                       🤍
                     </button>
                   ))}
+                <h3>{meal.name}</h3>
+                <span>{meal.icon}</span>
+                <h6>{meal.composition}</h6>
                 {adding.state && (
                   <button id={meal.id} onClick={handleMealSelect}>
                     ⏪
