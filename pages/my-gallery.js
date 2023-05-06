@@ -2,8 +2,10 @@ import Layout from './layout'
 import styles from '../styles/index.module.css'
 import MyGallery from '@/components/MyGallery/MyGallery'
 import { verify } from 'jsonwebtoken'
+import useCookieData from '@/hooks/useCookieData'
 
-export default function MyGalleryPage({ data, ingredients }) {
+export default function MyGalleryPage({ data, ingredients, userData }) {
+  useCookieData(userData)
   return (
     <>
       <Layout>
@@ -35,7 +37,8 @@ export async function getServerSideProps(context) {
     return {
       props: {
         data,
-        ingredients
+        ingredients,
+        userData
       }
     }
   } catch (error) {

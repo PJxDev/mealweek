@@ -1,7 +1,10 @@
 import Layout from '../layout'
 import styles from '../../styles/index.module.css'
+import useCookieData from '@/hooks/useCookieData'
+import { verify } from 'jsonwebtoken'
 
-export default function PlanningEditor({ mealData }) {
+export default function PlanningEditor({ mealData, userData }) {
+  useCookieData(userData)
   return (
     <>
       <Layout>
@@ -31,19 +34,25 @@ export default function PlanningEditor({ mealData }) {
 }
 
 export async function getServerSideProps(context) {
+  const { tkn } = context.req.cookies
+  let userData
+  if (tkn) {
+    userData = verify(tkn, process.env.PASS_SECRET)
+  }
   const mealId = context.query.id
   try {
     const result = await fetch(`http://localhost:3000/api/${mealId}/meals`)
     const mealData = await result.json()
     return {
       props: {
-        mealData
+        mealData,
+        userData
       }
     }
   } catch (error) {
     console.error(error)
     return {
-      props: {}
+      props: { userData }
     }
   }
 }

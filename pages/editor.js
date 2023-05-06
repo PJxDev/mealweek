@@ -2,8 +2,10 @@ import Layout from './layout'
 import Editor from '../components/Editor/Editor'
 import styles from '../styles/index.module.css'
 import { verify } from 'jsonwebtoken'
+import useCookieData from '@/hooks/useCookieData'
 
-export default function PlanningEditor({ data }) {
+export default function PlanningEditor({ data, userData }) {
+  useCookieData(userData)
   return (
     <>
       <Layout>
@@ -30,7 +32,8 @@ export async function getServerSideProps(context) {
     const data = await result.json()
     return {
       props: {
-        data
+        data,
+        userData
       }
     }
   } catch (error) {
