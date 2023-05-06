@@ -31,6 +31,7 @@ export default function EditorButtons() {
           authorId,
           planningJson: JSON.stringify({ planningData })
         })
+        window.alert('The planning has been saved succesfully!')
       } catch (error) {
         console.error(error)
         window.alert(error.message)

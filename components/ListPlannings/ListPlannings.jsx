@@ -44,8 +44,9 @@ export default function MyGallery({ myPlannings: data }) {
     )
     if (option) {
       try {
-        // const result = await axios.delete(`/api/${planId}/my-plannings`)
-        // console.log(result)
+        const result = await axios.delete(`/api/${planId}/my-plannings`)
+        console.log(result)
+        window.alert('The planning has been deleted succesfully!')
         value[idx] = 0
         value = value.filter((el) => el !== 0).flat()
         setListPlannings(value)
@@ -93,6 +94,9 @@ export default function MyGallery({ myPlannings: data }) {
             </section>
           )
         })}
+      {listPlannings.length < 1 && (
+        <h2>Save some plannings, so you can see them here!</h2>
+      )}
     </div>
   )
 }
