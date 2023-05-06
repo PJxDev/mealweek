@@ -6,14 +6,8 @@ import Buttons from '../Buttons/MyGalleryButtons'
 import axios from 'axios'
 
 export default function MyGallery({ data, ingredients }) {
-  const {
-    planningData,
-    setPlanningData,
-    adding,
-    setAdding,
-    isLogged,
-    setIsLogged
-  } = useContext(PlanningContext)
+  const { planningData, setPlanningData, adding, setAdding } =
+    useContext(PlanningContext)
 
   function filterItems(arr, mealId) {
     return arr.filter((el) => String(el.id) === mealId)

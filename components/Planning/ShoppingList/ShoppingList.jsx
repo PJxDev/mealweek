@@ -4,21 +4,14 @@ import { PlanningContext } from '@/context/PlanningContext'
 import { useContext } from 'react'
 
 export default function ShoppingList() {
-  const {
-    planningData,
-    setPlanningData,
-    adding,
-    setAdding,
-    isLogged,
-    setIsLogged
-  } = useContext(PlanningContext)
+  const { planningData } = useContext(PlanningContext)
 
   const ingredients = planningData
     .flatMap((d) => {
       return [d.lunch.ingredients, d.dinner.ingredients]
     })
     .flat()
-  console.log(ingredients)
+
   const listIngredients = Object.values(
     ingredients.reduce((a, el) => {
       if (!a[el?.name]) {

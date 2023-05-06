@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from '@/styles/form.module.css'
 import axios from 'axios'
+import Router from 'next/router'
 
 export default function FormLogin() {
   const [dataForm, setDataForm] = useState({
@@ -19,11 +20,13 @@ export default function FormLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const result = await axios.post('/api/auth/register', dataForm)
-      setResult(result)
+      const res = await axios.post('/api/auth/register', dataForm)
+      setResult(res)
+      Router.push('/login')
     } catch (e) {
       console.error(e)
-      setResult({ data: 'Hubo un error enviando la petición al servidor' })
+      console.log(e)
+      setResult({ data: e.response.data })
     }
   }
 

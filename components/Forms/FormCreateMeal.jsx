@@ -1,10 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/createModal.module.css'
 import axios from 'axios'
+import { PlanningContext } from '@/context/PlanningContext'
 
 export default function FormCreateMeal({ setModalshow, ingredients }) {
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId
+  } = useContext(PlanningContext)
+
   const [dataForm, setDataForm] = useState({
-    author: '3',
+    author: authorId,
     name: '',
     icon: '',
     description: '',

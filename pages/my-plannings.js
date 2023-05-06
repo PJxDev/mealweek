@@ -1,15 +1,15 @@
 import Layout from './layout'
 import styles from '../styles/index.module.css'
-import MyGallery from '@/components/MyGallery/MyGallery'
+import ListPlannings from '@/components/ListPlannings/ListPlannings'
 import { verify } from 'jsonwebtoken'
 
-export default function MyGalleryPage({ data, ingredients }) {
+export default function MyPlannings({ myPlannings }) {
   return (
     <>
       <Layout>
         <main className={styles.main}>
-          <h2>My Gallery</h2>
-          <MyGallery data={data} ingredients={ingredients} />
+          <h2>My Plannings</h2>
+          <ListPlannings myPlannings={myPlannings} />
         </main>
       </Layout>
     </>
@@ -21,21 +21,18 @@ export async function getServerSideProps(context) {
     const { tkn } = context.req.cookies
     const userData = verify(tkn, process.env.PASS_SECRET)
     console.log(userData.id)
-    const result = await fetch('http://localhost:3000/api/my-gallery', {
+    const result = await fetch('http://localhost:3000/api/plannings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ userId: userData.id })
+      body: JSON.stringify({ authorId: userData.id })
     })
-    const data = await result.json()
+    const myPlannings = await result.json()
 
-    const result2 = await fetch('http://localhost:3000/api/ingredients')
-    const ingredients = await result2.json()
     return {
       props: {
-        data,
-        ingredients
+        myPlannings
       }
     }
   } catch (error) {

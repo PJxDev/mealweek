@@ -13,9 +13,12 @@ export default function FormLogin() {
     setPlanningData,
     adding,
     setAdding,
+    authorId,
+    setAuthorId,
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)
+
   const [dataForm, setDataForm] = useState({
     username: '',
     password: ''

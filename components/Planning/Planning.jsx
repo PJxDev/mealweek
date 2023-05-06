@@ -5,17 +5,28 @@ import Buttons from '../Buttons/PlanningButtons'
 import { useContext, useEffect, useRef } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
-export default function Planning() {
+export default function Planning({ userData }) {
   const {
     planningData,
     setPlanningData,
     adding,
     setAdding,
+    authorId,
+    setAuthorId,
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
+
+  useEffect(() => {
+    if (userData) {
+      setAuthorId(userData.id)
+      setIsLogged(true)
+    } else {
+      setIsLogged(false)
+    }
+  }, [])
 
   return (
     <section ref={planningRef} className={styles.container}>

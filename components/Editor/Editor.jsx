@@ -2,19 +2,11 @@ import styles from '@/styles/editor.module.css'
 import PlanningCard from '../Cards/PlanningCard'
 import Buttons from '../Buttons/EditorButtons'
 import MyGallery from '../MyGallery/MyGallery'
-import data from '../../examples/planning-data.json'
 import { useContext, useRef } from 'react'
 import { PlanningContext } from '../../context/PlanningContext'
 
 export default function Editor({ data }) {
-  const {
-    planningData,
-    setPlanningData,
-    adding,
-    setAdding,
-    isLogged,
-    setIsLogged
-  } = useContext(PlanningContext)
+  const { planningData } = useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
 

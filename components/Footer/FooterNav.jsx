@@ -9,7 +9,7 @@ export default function HeaderNav() {
           <Link href='/'>Inicio</Link>
         </li>
         <li className={styles.listElement}>
-          <Link href='/plannings'>My Plannings</Link>
+          <Link href='/my-plannings'>My Plannings</Link>
         </li>
         <li className={styles.listElement}>
           <Link href='/my-gallery'>My Meals's Gallery</Link>

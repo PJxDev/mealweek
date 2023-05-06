@@ -1,18 +1,7 @@
-import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
-import { PlanningContext } from '../../context/PlanningContext'
 import Router from 'next/router'
 
 export default function AllMeals({ mealsData }) {
-  const {
-    planningData,
-    setPlanningData,
-    adding,
-    setAdding,
-    isLogged,
-    setIsLogged
-  } = useContext(PlanningContext)
-
   const handleClick = (e) => {
     const id = e.target.id
     Router.push(`/${id}/meals`)

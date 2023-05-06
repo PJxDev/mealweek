@@ -12,6 +12,8 @@ export default function UserButton() {
     setPlanningData,
     adding,
     setAdding,
+    authorId,
+    setAuthorId,
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)

@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Layout from './layout'
 import Planning from '@/components/Planning/Planning'
 import styles from '../styles/index.module.css'
+import { verify } from 'jsonwebtoken'
 
-export default function Home() {
+export default function Home({ userData }) {
   return (
     <>
       <Head>
@@ -14,9 +15,18 @@ export default function Home() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <Planning />
+          <Planning userData={userData} />
         </main>
       </Layout>
     </>
   )
+}
+export async function getServerSideProps(context) {
+  const { tkn } = context.req.cookies
+  if (tkn) {
+    const userData = verify(tkn, process.env.PASS_SECRET)
+    console.log(userData.id)
+    return { props: { userData } }
+  }
+  return { props: {} }
 }

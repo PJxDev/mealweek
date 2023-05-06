@@ -43,6 +43,7 @@ export default function PlanningProvider({ children }) {
   const [planningData, setPlanningData] = useState(initialData)
   const [adding, setAdding] = useState({ state: false })
   const [isLogged, setIsLogged] = useState(false)
+  const [authorId, setAuthorId] = useState()
 
   return (
     <PlanningContext.Provider
@@ -51,6 +52,8 @@ export default function PlanningProvider({ children }) {
         setPlanningData,
         adding,
         setAdding,
+        authorId,
+        setAuthorId,
         isLogged,
         setIsLogged
       }}
