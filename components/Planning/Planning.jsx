@@ -3,7 +3,7 @@ import PlanningCard from '../Cards/PlanningCard'
 import ShoppingList from './ShoppingList/ShoppingList'
 import Buttons from '../Buttons/PlanningButtons'
 import { useContext, useEffect, useRef } from 'react'
-import { PlanningContext } from '../../context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningProvider'
 
 export default function Planning({ userData }) {
   const {

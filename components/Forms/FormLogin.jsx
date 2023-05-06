@@ -3,7 +3,7 @@ import styles from '@/styles/form.module.css'
 import axios from 'axios'
 import Link from 'next/link'
 import Router from 'next/router'
-import { PlanningContext } from '@/context/PlanningContext'
+import { PlanningContext } from '@/context/PlanningProvider'
 
 // TODO: CONTROLAR INPUTS
 

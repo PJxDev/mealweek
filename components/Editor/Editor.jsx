@@ -3,7 +3,7 @@ import PlanningCard from '../Cards/PlanningCard'
 import Buttons from '../Buttons/EditorButtons'
 import MyGallery from '../MyGallery/MyGallery'
 import { useContext, useRef } from 'react'
-import { PlanningContext } from '../../context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningProvider'
 
 export default function Editor({ data }) {
   const { planningData } = useContext(PlanningContext)

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/createModal.module.css'
 import axios from 'axios'
-import { PlanningContext } from '@/context/PlanningContext'
+import { PlanningContext } from '@/context/PlanningProvider'
 
 export default function FormCreateMeal({ setModalshow, ingredients }) {
   const {

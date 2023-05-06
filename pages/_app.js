@@ -1,5 +1,5 @@
+import PlanningProvider from '@/context/PlanningProvider'
 import '@/styles/globals.css'
-import PlanningProvider from '@/context/PlanningContext'
 
 export default function App({ Component, pageProps }) {
   return (

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from '../../styles/userButton.module.css'
 import { useContext, useState } from 'react'
 import Link from 'next/link'
-import { PlanningContext } from '@/context/PlanningContext'
+import { PlanningContext } from '@/context/PlanningProvider'
 import Router from 'next/router'
 import axios from 'axios'
 

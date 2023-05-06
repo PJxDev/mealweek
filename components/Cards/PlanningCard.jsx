@@ -1,6 +1,6 @@
 import styles from '@/styles/planningCard.module.css'
 import { useContext } from 'react'
-import { PlanningContext } from '../../context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningProvider'
 
 export default function PlanningCard({ idx: id, data, isEditting }) {
   const { day, lunch, dinner } = data || ''

@@ -1,6 +1,6 @@
 import styles from '@/styles/shoppingList.module.css'
 import data from '@/examples/meals-data.json'
-import { PlanningContext } from '@/context/PlanningContext'
+import { PlanningContext } from '@/context/PlanningProvider'
 import { useContext } from 'react'
 
 export default function ShoppingList() {

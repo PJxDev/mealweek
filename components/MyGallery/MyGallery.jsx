@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
-import { PlanningContext } from '../../context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningProvider'
 // import data from '@/examples/my-gallery.json'
 import Buttons from '../Buttons/MyGalleryButtons'
 import axios from 'axios'

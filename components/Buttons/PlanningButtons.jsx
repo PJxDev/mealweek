@@ -2,7 +2,7 @@ import styles from '../../styles/buttons.module.css'
 import Router from 'next/router'
 import dynamic from 'next/dynamic'
 import { useContext } from 'react'
-import { PlanningContext } from '../../context/PlanningContext'
+import { PlanningContext } from '../../context/PlanningProvider'
 import axios from 'axios'
 
 export default function PlanningButtons({ refs }) {
