@@ -1,10 +1,21 @@
 import styles from '@/styles/shoppingList.module.css'
 import data from '@/examples/meals-data.json'
-import { PlanningContext } from '@/context/PlanningProvider'
 import { useContext } from 'react'
+import PlanningContext from '@/context/PlanningContext'
 
 export default function ShoppingList() {
-  const { planningData } = useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
 
   const ingredients = planningData
     .flatMap((d) => {

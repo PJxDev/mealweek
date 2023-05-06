@@ -1,12 +1,22 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
 import Router from 'next/router'
 import axios from 'axios'
-import PlanningContext from '../../context/PlanningContext'
+import PlanningContext from '@/context/PlanningContext'
 
 export default function AllMeals({ mealsData }) {
-  const { authorId, favs, setFavs } = useContext(PlanningContext)
-  console.log(authorId)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
 
   const handleClick = (e) => {
     const id = e.target.id
@@ -28,10 +38,7 @@ export default function AllMeals({ mealsData }) {
     value.push(id)
     setFavs(value)
 
-    // FAVS deberia de estar en el contexto, cuando el usuario hace el loggin
-    // este handle modifica el FAVS
-    // si la comida es favorita, aparecerá una x para eliminarla, y sino, aparecerá un corazón para agregarla
-    console.log(mealsData.filter((el) => el.id === id))
+    // console.log(mealsData.filter((el) => el.id === id))
   }
   const handleDelFav = async (e) => {
     let value = [...favs]
@@ -39,10 +46,7 @@ export default function AllMeals({ mealsData }) {
     const idx = value.indexOf(id)
     if (id === -1) return
     try {
-      const result = await axios.delete('/api/my-gallery', {
-        userId: authorId,
-        mealId: id
-      })
+      const result = await axios.delete(`/api/${authorId}/${id}/my-gallery`)
       console.log(result)
     } catch (error) {
       console.log(error.message)

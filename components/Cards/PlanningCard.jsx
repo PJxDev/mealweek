@@ -1,11 +1,21 @@
+import PlanningContext from '@/context/PlanningContext'
 import styles from '@/styles/planningCard.module.css'
 import { useContext } from 'react'
-import { PlanningContext } from '../../context/PlanningProvider'
 
 export default function PlanningCard({ idx: id, data, isEditting }) {
   const { day, lunch, dinner } = data || ''
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
 
   const handleDelete = (e) => {
     const value = [...planningData]

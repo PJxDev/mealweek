@@ -43,7 +43,7 @@ const PlanningProvider = ({ children }) => {
   const [adding, setAdding] = useState({ state: false })
   const [isLogged, setIsLogged] = useState(false)
   const [authorId, setAuthorId] = useState(null)
-  const [favs, setFavs] = useState(null)
+  const [favs, setFavs] = useState([])
 
   return (
     <PlanningContext.Provider

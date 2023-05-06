@@ -3,6 +3,8 @@ import Layout from './layout'
 import Planning from '@/components/Planning/Planning'
 import styles from '../styles/index.module.css'
 import { verify } from 'jsonwebtoken'
+import PlanningContext from '@/context/PlanningContext'
+import { useContext } from 'react'
 
 export default function Home({ userData }) {
   return (
@@ -21,6 +23,7 @@ export default function Home({ userData }) {
     </>
   )
 }
+
 export async function getServerSideProps(context) {
   const { tkn } = context.req.cookies
   if (tkn) {

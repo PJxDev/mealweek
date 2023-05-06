@@ -2,13 +2,28 @@ import styles from '@/styles/editor.module.css'
 import PlanningCard from '../Cards/PlanningCard'
 import Buttons from '../Buttons/EditorButtons'
 import MyGallery from '../MyGallery/MyGallery'
-import { useContext, useRef } from 'react'
-import { PlanningContext } from '../../context/PlanningProvider'
+import { useContext, useEffect, useRef } from 'react'
+import PlanningContext from '@/context/PlanningContext'
 
 export default function Editor({ data }) {
-  const { planningData } = useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
   const planningRef = useRef()
   const listRef = useRef()
+
+  useEffect(() => {
+    setAdding({ state: false })
+  }, [])
 
   return (
     <section ref={planningRef} className={styles.container}>

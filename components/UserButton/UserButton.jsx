@@ -2,9 +2,9 @@ import Image from 'next/image'
 import styles from '../../styles/userButton.module.css'
 import { useContext, useState } from 'react'
 import Link from 'next/link'
-import { PlanningContext } from '@/context/PlanningProvider'
 import Router from 'next/router'
 import axios from 'axios'
+import PlanningContext from '@/context/PlanningContext'
 
 export default function UserButton() {
   const {
@@ -14,10 +14,11 @@ export default function UserButton() {
     setAdding,
     authorId,
     setAuthorId,
+    favs,
+    setFavs,
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)
-
   const handleLogout = async () => {
     setIsLogged(false)
     await axios.post('/api/auth/logout')

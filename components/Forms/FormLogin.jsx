@@ -3,7 +3,7 @@ import styles from '@/styles/form.module.css'
 import axios from 'axios'
 import Link from 'next/link'
 import Router from 'next/router'
-import { PlanningContext } from '@/context/PlanningProvider'
+import PlanningContext from '@/context/PlanningContext'
 
 // TODO: CONTROLAR INPUTS
 
@@ -15,6 +15,8 @@ export default function FormLogin() {
     setAdding,
     authorId,
     setAuthorId,
+    favs,
+    setFavs,
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)
@@ -35,8 +37,8 @@ export default function FormLogin() {
     try {
       const value = await axios.post('/api/auth/login', dataForm)
       setResult(value)
-      Router.push('/')
       setIsLogged(true)
+      Router.push('/')
     } catch {
       setResult({ data: 'Usuario Incorrecto' })
     }

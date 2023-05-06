@@ -1,13 +1,24 @@
 import { useContext } from 'react'
 import styles from '../../styles/myGallery.module.css'
-import { PlanningContext } from '../../context/PlanningProvider'
 // import data from '@/examples/my-gallery.json'
 import Buttons from '../Buttons/MyGalleryButtons'
 import axios from 'axios'
+import PlanningContext from '@/context/PlanningContext'
+import logo from '../../assets/img/logo-footer.svg'
 
 export default function MyGallery({ data, ingredients }) {
-  const { planningData, setPlanningData, adding, setAdding } =
-    useContext(PlanningContext)
+  const {
+    planningData,
+    setPlanningData,
+    adding,
+    setAdding,
+    authorId,
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
+  } = useContext(PlanningContext)
 
   function filterItems(arr, mealId) {
     return arr.filter((el) => String(el.id) === mealId)
@@ -39,6 +50,42 @@ export default function MyGallery({ data, ingredients }) {
     setAdding({ state: false })
   }
 
+  const handleAddFav = async (e) => {
+    const value = [...favs]
+    const id = Number(e.target.id)
+    try {
+      const result = await axios.post('/api/my-gallery', {
+        userId: authorId,
+        mealId: id
+      })
+      console.log(result)
+    } catch (error) {
+      console.log(error.message)
+      return
+    }
+    value.push(id)
+    setFavs(value)
+
+    // console.log(mealsData.filter((el) => el.id === id))
+  }
+  const handleDelFav = async (e) => {
+    let value = [...favs]
+    const id = Number(e.target.id)
+    const idx = value.indexOf(id)
+    if (id === -1) return
+    try {
+      const result = await axios.delete(`/api/${authorId}/${id}/my-gallery`)
+      console.log(result)
+    } catch (error) {
+      console.log(error.message)
+      return
+    }
+    value[idx] = 0
+    value = value.filter((el) => el !== 0).flat()
+    setFavs(value)
+    console.log(value)
+  }
+
   return (
     <div className={styles.container}>
       <section>
@@ -49,6 +96,25 @@ export default function MyGallery({ data, ingredients }) {
                 <h3>{meal.name}</h3>
                 <span>{meal.icon}</span>
                 <h6>{meal.composition}</h6>
+                {favs &&
+                  adding.state === false &&
+                  (favs.includes(meal.id) ? (
+                    <button
+                      style={{ fontSize: '1rem' }}
+                      id={meal.id}
+                      onClick={handleDelFav}
+                    >
+                      💗
+                    </button>
+                  ) : (
+                    <button
+                      style={{ fontSize: '1rem' }}
+                      id={meal.id}
+                      onClick={handleAddFav}
+                    >
+                      🤍
+                    </button>
+                  ))}
                 {adding.state && (
                   <button id={meal.id} onClick={handleMealSelect}>
                     ⏪

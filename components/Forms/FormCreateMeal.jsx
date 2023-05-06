@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/createModal.module.css'
 import axios from 'axios'
-import { PlanningContext } from '@/context/PlanningProvider'
+import PlanningContext from '@/context/PlanningContext'
 
 export default function FormCreateMeal({ setModalshow, ingredients }) {
   const {
@@ -10,7 +10,11 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
     adding,
     setAdding,
     authorId,
-    setAuthorId
+    setAuthorId,
+    favs,
+    setFavs,
+    isLogged,
+    setIsLogged
   } = useContext(PlanningContext)
 
   const [dataForm, setDataForm] = useState({
