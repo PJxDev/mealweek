@@ -5,6 +5,7 @@ import UserButton from '../UserButton/UserButton'
 import HeaderNav from './HeaderNav'
 import PlanningContext from '@/context/PlanningContext'
 import { useContext } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
   const {
@@ -21,13 +22,15 @@ export default function Header() {
   } = useContext(PlanningContext)
   return (
     <header className={styles.container}>
-      <Image
-        className={styles.logo}
-        src={logo}
-        alt='logo of Mealweek'
-        width={175}
-        priority={true}
-      />
+      <Link href='/'>
+        <Image
+          className={styles.logo}
+          src={logo}
+          alt='logo of Mealweek'
+          width={175}
+          priority={true}
+        />
+      </Link>
       {isLogged && <HeaderNav />}
       <UserButton className='user-button' />
     </header>

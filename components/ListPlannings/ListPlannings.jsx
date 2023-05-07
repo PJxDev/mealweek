@@ -94,7 +94,7 @@ export default function MyGallery({ myPlannings: data }) {
             </section>
           )
         })}
-      {listPlannings.length < 1 && (
+      {listPlannings?.length < 1 && (
         <h2>Save some plannings, so you can see them here!</h2>
       )}
     </div>
