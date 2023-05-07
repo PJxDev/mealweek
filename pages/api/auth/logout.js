@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const serialized = serialize('tkn', null, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 0,
       path: '/'
     })

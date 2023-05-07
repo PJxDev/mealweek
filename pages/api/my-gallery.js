@@ -77,7 +77,7 @@ async function saveFav({ req, res }) {
     const serialized = serialize('tkn', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/'
     })
 
@@ -85,7 +85,7 @@ async function saveFav({ req, res }) {
 
     return res?.status(200).json('Success saving the meal in your gallery')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return res?.status(403).json(error.message)
   }
 }

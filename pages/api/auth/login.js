@@ -16,11 +16,9 @@ export default async function handler(req, res) {
         'SELECT meal_id as id FROM favs_meals WHERE user_id=?',
         id
       )
-      console.log(result)
       const value = await result.map((meal) => {
         return meal.id
       })
-      console.log(value)
       return value
     }
 
@@ -48,7 +46,7 @@ export default async function handler(req, res) {
         const serialized = serialize('tkn', token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
-          sameSite: 'strict',
+          sameSite: 'lax',
           path: '/'
         })
 
@@ -57,7 +55,7 @@ export default async function handler(req, res) {
         return res?.status(200).json('Usuario correcto')
       } else throw new Error()
     } catch (error) {
-      console.log(error)
+      console.error(error)
       return res?.status(301).json('Usuario o contraseña incorrecta')
     }
   }

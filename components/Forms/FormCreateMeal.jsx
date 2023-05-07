@@ -111,7 +111,6 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
 
     try {
       const newValue = window.prompt('Introduzca el nombre del ingrediente:')
-      console.log(newValue)
       if (!newValue) {
         throw new Error('Se canceló la creación del ingrediente')
       }
@@ -120,7 +119,6 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
       setListIngredients([...value])
       setDataChanged(true)
     } catch (error) {
-      console.log(error)
       window.alert(
         'Ha ocurrido un error o se ha cancelado la creación del ingrediente.'
       )
@@ -158,7 +156,6 @@ export default function FormCreateMeal({ setModalshow, ingredients }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(dataForm)
     try {
       const result = await axios.post('/api/meals', dataForm)
       setResult(result)

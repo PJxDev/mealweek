@@ -15,7 +15,6 @@ async function createMeals({ req, res }) {
       req?.body
 
     const arrayIngredients = ingredients.map((el) => {
-      console.log(ingredients)
       const array = el.trim().split(' ')
       // n = name, q = quantity, t = type
       const q = array[array.length - 2]
@@ -26,7 +25,6 @@ async function createMeals({ req, res }) {
     const nameArray = arrayIngredients.map((el) => {
       return el[0]
     })
-    console.log(nameArray)
     const quantityArray = arrayIngredients.map((el) => {
       return el[1]
     })
@@ -64,10 +62,6 @@ async function createMeals({ req, res }) {
     const [result2] = await pool.query(
       `INSERT INTO shopping_list (meal_id, ingredient_id, quantity, type) VALUES ${queryCondition}`,
       dataIngredientsSorted.map((el, idx) => {
-        console.log(idx, nameArray[idx])
-        console.log(idx, el.ingredients_id)
-        console.log(idx, quantityArray[idx])
-        console.log(idx, typeArray[idx])
         return [
           dataMeal.meal_id,
           el.ingredients_id,
@@ -84,7 +78,7 @@ async function createMeals({ req, res }) {
 
     return res?.status(200).json('Success creating the meal')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     if (error.errno === 1062) {
       return res?.status(403).json('The meal exists already.')
     }
