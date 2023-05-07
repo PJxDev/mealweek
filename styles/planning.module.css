@@ -6,6 +6,8 @@
     'a a c';
   gap: 2rem;
   max-width: 100rem;
+  font-family: var(--font-text);
+  font-weight: 300;
 }
 
 .container :nth-child(1) {
@@ -52,4 +54,5 @@
   align-items: flex-start;
   gap: 2rem;
   max-width: 600px;
+  font-family: inherit;
 }

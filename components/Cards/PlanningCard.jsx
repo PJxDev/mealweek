@@ -36,48 +36,72 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
   if (isEditting) {
     return (
       <div className={styles.container}>
-        {lunch !== '' || dinner !== '' ? (
-          <p id={id} onClick={handleDelete}>
-            ❌
-          </p>
-        ) : null}
-        <h3>{day}</h3>
-        <section>
-          <h4>Lunch</h4>
-          {lunch === null || lunch === '' || lunch === undefined ? (
-            <button id={id} className='lunch' onClick={handleAdd}>
-              ➕
+        <header>
+          <h3>{day}</h3>
+          {lunch !== '' || dinner !== '' ? (
+            <button
+              className={styles.crossButton}
+              id={id}
+              onClick={handleDelete}
+            >
+              ❌
             </button>
           ) : null}
-          <span>{lunch?.icon || ''}</span>
-          <span>{lunch?.name || ''}</span>
-        </section>
-        <section>
-          <h4>Dinner</h4>
-          {dinner === null || dinner === '' || dinner === undefined ? (
-            <button id={id} className='dinner' onClick={handleAdd}>
-              ➕
-            </button>
-          ) : null}
-          <span>{dinner?.icon || ''}</span>
-          <span>{dinner?.name || ''}</span>
-        </section>
+        </header>
+        <article>
+          <header>
+            <h4>Lunch</h4>
+          </header>
+          <section>
+            {lunch === null || lunch === '' || lunch === undefined ? (
+              <button id={id} className='lunch' onClick={handleAdd}>
+                ➕
+              </button>
+            ) : null}
+            <span>{lunch?.icon || ''}</span>
+            <span>{lunch?.name || ''}</span>
+          </section>
+        </article>
+        <article>
+          <header>
+            <h4>Dinner</h4>
+          </header>
+          <section>
+            {dinner === null || dinner === '' || dinner === undefined ? (
+              <button id={id} className='dinner' onClick={handleAdd}>
+                ➕
+              </button>
+            ) : null}
+            <span>{dinner?.icon || ''}</span>
+            <span>{dinner?.name || ''}</span>
+          </section>
+        </article>
       </div>
     )
   } else {
     return (
       <div className={styles.container}>
-        <h3>{day}</h3>
-        <section>
-          <h4>Lunch</h4>
-          <span>{lunch.icon || ''}</span>
-          <span>{lunch.name || ''}</span>
-        </section>
-        <section>
-          <h4>Dinner</h4>
-          <span>{dinner?.icon || ''}</span>
-          <span>{dinner?.name || ''}</span>
-        </section>
+        <header>
+          <h3>{day}</h3>
+        </header>
+        <article>
+          <header>
+            <h4>Lunch</h4>
+          </header>
+          <section>
+            <span>{lunch.icon || ''}</span>
+            <span>{lunch.name || ''}</span>
+          </section>
+        </article>
+        <article>
+          <header>
+            <h4>Dinner</h4>
+          </header>
+          <section>
+            <span>{dinner?.icon || ''}</span>
+            <span>{dinner?.name || ''}</span>
+          </section>
+        </article>
       </div>
     )
   }

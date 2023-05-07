@@ -4,11 +4,23 @@
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
+  font-family: var(--font-text);
 }
 
 .name {
   font-size: 1.2rem;
-  font-family: 'Itim';
+  font-family: inherit;
+  font-weight: 300;
+}
+
+.container button {
+  font-family: inherit;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-size: inherit;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-black);
 }
 
 .image {
@@ -16,6 +28,6 @@
 }
 
 .container a {
-  font-family: 'Itim';
+  font-family: var(--font-text);
   font-size: 1.5rem;
 }
