@@ -42,7 +42,7 @@ export default function FormLogin() {
       <input
         type='text'
         name='username'
-        placeholder='usuario'
+        placeholder='username'
         value={dataForm.username}
         onChange={handleChange}
       />
@@ -54,7 +54,9 @@ export default function FormLogin() {
         onChange={handleChange}
       />
       <button>Register</button>
-      {result && <h2>{`${result.data}`}</h2>}
+      {result && (
+        <h2 style={{ color: 'var(--color-black)' }}>{`${result.data}`}</h2>
+      )}
     </form>
   )
 }

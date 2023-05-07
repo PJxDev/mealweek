@@ -1,6 +1,6 @@
 import Layout from './layout'
 import Planning from '@/components/Planning/Planning'
-import styles from '../styles/index.module.css'
+import styles from '../styles/planningPage.module.css'
 import { verify } from 'jsonwebtoken'
 import useCookieData from '@/hooks/useCookieData'
 

@@ -18,7 +18,7 @@ export default function AllMeals({ mealsData }) {
     setIsLogged
   } = useContext(PlanningContext)
 
-  const handleClick = (e) => {
+  const handleMoreInfo = (e) => {
     const id = e.target.id
     Router.push(`/${id}/meals`)
   }
@@ -71,7 +71,7 @@ export default function AllMeals({ mealsData }) {
                 <button
                   style={{ fontSize: '1rem' }}
                   id={meal.id}
-                  onClick={handleClick}
+                  onClick={handleMoreInfo}
                 >
                   👁
                 </button>
