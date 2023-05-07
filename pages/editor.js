@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
     const { tkn } = context.req.cookies
     const userData = verify(tkn, process.env.PASS_SECRET)
     console.log(userData.id)
-    const result = await fetch('http://localhost:3000/api/my-gallery', {
+    const result = await fetch(`${process.env.DOMAIN}/api/my-gallery`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
