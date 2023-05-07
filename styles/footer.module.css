@@ -1,0 +1,46 @@
+.footer {
+  background-color: var(--color-secondary);
+  font-family: 'Itim', sans-serif;
+  font-weight: 200;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.footer section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+.footer h2 {
+  font-family: 'Titan One', sans-serif;
+  font-weight: 400;
+}
+.footer h5 {
+  font-weight: inherit;
+}
+
+.nav {
+  display: flex;
+  justify-self: flex-end;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-align: center;
+  gap: 1rem;
+}
+
+.listElement {
+  font-size: 1.2rem;
+}

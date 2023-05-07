@@ -1,8 +1,7 @@
 import { createContext, useState } from 'react'
+import PlanningContext from './PlanningContext'
 
-export const PlanningContext = createContext()
-
-export default function PlanningProvider({ children }) {
+const PlanningProvider = ({ children }) => {
   const initialData = [
     {
       day: 'Monday',
@@ -35,7 +34,6 @@ export default function PlanningProvider({ children }) {
       dinner: ''
     },
     {
-      id: 7,
       day: 'Sunday',
       lunch: '',
       dinner: ''
@@ -43,12 +41,28 @@ export default function PlanningProvider({ children }) {
   ]
   const [planningData, setPlanningData] = useState(initialData)
   const [adding, setAdding] = useState({ state: false })
+  const [isLogged, setIsLogged] = useState(false)
+  const [authorId, setAuthorId] = useState()
+  const [favs, setFavs] = useState([])
 
   return (
     <PlanningContext.Provider
-      value={{ planningData, setPlanningData, adding, setAdding }}
+      value={{
+        planningData,
+        setPlanningData,
+        adding,
+        setAdding,
+        authorId,
+        setAuthorId,
+        favs,
+        setFavs,
+        isLogged,
+        setIsLogged
+      }}
     >
       {children}
     </PlanningContext.Provider>
   )
 }
+
+export default PlanningProvider

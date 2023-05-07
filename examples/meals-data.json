@@ -1,0 +1,64 @@
+[
+  {
+    "id": 5,
+    "name": "Huevo Frito",
+    "icon": "🍳",
+    "description": "Es tan simple y sencillo como abrir un huevo en una sarten caliente y freirlo con un poco de aceite. Para agilizar su cocción y obtener el mejor punto de sabor, cocinalo a fuego medio y cuando la clara esté cocinada, vierte aceite poco a poco a la yema por encima. Para terminar, esparce una pizca de sal y listo.",
+    "composition": "huevo",
+    "ingredients": [
+      {
+        "name": "Harina",
+        "quantity": "1",
+        "type": "c/u"
+      },
+      {
+        "name": "Huevo",
+        "quantity": "10",
+        "type": "ml"
+      },
+      {
+        "name": "Huevo",
+        "quantity": "10",
+        "type": "ml"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Filetes de Pollo con Patatas",
+    "icon": "🍗",
+    "description": "Se pelan y se lavan las patatas, para luego dejarlas unos 15 min. en remojo. Luego las freimos bien, o en aceite caliente o en una freidora de aire. Se hacen los filetes de pollo a la plancha y se sal-pimenta al gusto.",
+    "composition": "carne",
+    "ingredients": [
+      {
+        "name": "Filete de pollo",
+        "quantity": "250",
+        "type": "gr"
+      },
+      {
+        "name": "Patata",
+        "quantity": "300",
+        "type": "gr"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Dorada a la plancha",
+    "icon": "🐟",
+    "description": "",
+    "composition": "pescado",
+    "ingredients": [
+      {
+        "name": "Aceite de oliva",
+        "quantity": "1",
+        "type": "c/u"
+      },
+      {
+        "name": "Dorada",
+        "quantity": "10",
+        "type": "ml"
+      }
+    ]
+  }
+]

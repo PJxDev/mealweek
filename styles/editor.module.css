@@ -1,0 +1,48 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    'a a b'
+    'a a b'
+    'a a c';
+  gap: 2rem;
+  max-width: 100rem;
+}
+
+.container :nth-child(1) {
+  grid-area: a;
+}
+.container :nth-child(2) {
+  grid-area: b;
+}
+.container :nth-child(3) {
+  grid-area: c;
+}
+
+.planningContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  border: 2px solid orange;
+  flex-wrap: wrap;
+  max-width: 1280px;
+}
+
+.planningCards {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+  border: 2px solid blueviolet;
+  flex-wrap: wrap;
+}
+
+.shoppingListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 600px;
+}

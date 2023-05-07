@@ -6,10 +6,6 @@
     'a a c';
   gap: 2rem;
   max-width: 100rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;*/
 }
 
 .container :nth-child(1) {
@@ -25,7 +21,6 @@
 .planningContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
   padding: 2rem;

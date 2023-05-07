@@ -1,12 +1,12 @@
-import PlanningProvider from '@/components/Context/PlanningContext'
+import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
-import React from 'react'
 
 export default function Layout({ children }) {
   return (
-    <PlanningProvider>
+    <>
       <Header />
       {children}
-    </PlanningProvider>
+      <Footer />
+    </>
   )
 }
