@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
     userData = verify(tkn, process.env.PASS_SECRET)
   }
   try {
-    const result = await fetch('http://localhost:3000/api/meals')
+    const result = await fetch(`${process.env.DOMAIN}/api/meals`)
     const mealsData = await result.json()
     return {
       props: {

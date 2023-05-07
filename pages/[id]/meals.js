@@ -41,7 +41,7 @@ export async function getServerSideProps(context) {
   }
   const mealId = context.query.id
   try {
-    const result = await fetch(`http://localhost:3000/api/${mealId}/meals`)
+    const result = await fetch(`${process.env.DOMAIN}/api/${mealId}/meals`)
     const mealData = await result.json()
     return {
       props: {
