@@ -6,7 +6,7 @@ export default function HeaderNav() {
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.listElement}>
-          <Link href='/'>Inicio</Link>
+          <Link href='/planning'>Planning</Link>
         </li>
         <li className={styles.listElement}>
           <Link href='/my-plannings'>My Plannings</Link>

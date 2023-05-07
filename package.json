@@ -32,7 +32,8 @@
     "rules": {
       "no-unused-vars": "warn",
       "space-before-function-paren": "off",
-      "multiline-ternary": "off"
+      "multiline-ternary": "off",
+      "indent": "off"
     },
     "extends": "standard"
   }

@@ -3,8 +3,12 @@ import { jwtVerify } from 'jose'
 
 export async function middleware(req) {
   const tkn = req.cookies.get('tkn')
-
-  if (tkn === undefined) {
+  if (
+    tkn === undefined &&
+    req.nextUrl.pathname !== '/' &&
+    req.nextUrl.pathname !== '/login' &&
+    req.nextUrl.pathname !== '/register'
+  ) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
   try {
@@ -12,15 +16,39 @@ export async function middleware(req) {
       tkn,
       new TextEncoder().encode(process.env.PASS_SECRET)
     )
-    console.log(payload)
-
-    return NextResponse.next()
+    if (
+      req.nextUrl.pathname === '/' ||
+      req.nextUrl.pathname === '/login' ||
+      req.nextUrl.pathname === '/register'
+    ) {
+      return NextResponse.redirect(new URL('/planning', req.url))
+    } else {
+      return NextResponse.next()
+    }
   } catch (error) {
     console.error(error)
-    return NextResponse.redirect(new URL('/login', req.url))
+    if (
+      req.nextUrl.pathname === '/' ||
+      req.nextUrl.pathname === '/login' ||
+      req.nextUrl.pathname === '/register'
+    ) {
+      return NextResponse.next()
+    } else {
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
   }
 }
 
 export const config = {
-  matcher: ['/my-plannings', '/my-gallery', '/editor', '/all-meals', '/meals']
+  matcher: [
+    '/',
+    '/my-plannings',
+    '/my-gallery',
+    '/editor',
+    '/all-meals',
+    '/meals',
+    '/planning',
+    '/login',
+    '/register'
+  ]
 }

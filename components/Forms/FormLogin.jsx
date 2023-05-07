@@ -38,7 +38,7 @@ export default function FormLogin() {
       const value = await axios.post('/api/auth/login', dataForm)
       setResult(value)
       setIsLogged(true)
-      Router.push('/')
+      Router.push('/planning')
     } catch {
       setResult({ data: 'Usuario Incorrecto' })
     }

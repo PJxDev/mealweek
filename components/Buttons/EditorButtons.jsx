@@ -18,7 +18,7 @@ export default function EditorButtons() {
     setIsLogged
   } = useContext(PlanningContext)
   const handleBack = () => {
-    Router.push('/')
+    Router.push('/planning')
   }
   const handleSave = async () => {
     const option = window.confirm(
