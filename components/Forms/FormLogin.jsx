@@ -30,6 +30,9 @@ export default function FormLogin() {
   const handleChange = (e) => {
     const newValue = { ...dataForm, [e.target.name]: e.target.value }
     setDataForm(newValue)
+    if (result) {
+      setResult('')
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -40,7 +43,7 @@ export default function FormLogin() {
       setIsLogged(true)
       Router.push('/planning')
     } catch {
-      setResult({ data: 'Usuario Incorrecto' })
+      setResult({ data: 'Username or password incorrect!' })
     }
   }
 
@@ -49,7 +52,7 @@ export default function FormLogin() {
       <input
         type='text'
         name='username'
-        placeholder='usuario'
+        placeholder='username'
         value={dataForm.username}
         onChange={handleChange}
       />

@@ -72,7 +72,11 @@
   gap: 2rem;
   text-align: center;
 }
+.box p {
+  width: 100%;
+}
 .box h3 {
+  width: 100%;
   font-size: 1.7rem;
 }
 .banner {
@@ -110,4 +114,31 @@
 }
 .banner a:hover {
   font-size: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .main {
+    padding: 1rem;
+  }
+  .box {
+    flex-direction: column;
+    max-height: 65rem;
+    width: 100%;
+  }
+  .box div {
+    max-width: 100%;
+  }
+  .banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    padding: 0.5rem;
+  }
+  .banner {
+    max-width: 100%;
+  }
 }
