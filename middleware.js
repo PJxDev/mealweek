@@ -3,7 +3,7 @@ import { jwtVerify } from 'jose'
 
 export async function middleware(req) {
   console.log(req.nextUrl.pathname)
-  const tkn = req.cookies.get('tkn') ? req.cookies.get('tkn').value : undefined
+  const tkn = req.cookies.get('tkn')
   if (
     tkn === undefined &&
     req.nextUrl.pathname !== '/' &&
