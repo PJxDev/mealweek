@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import { jwtVerify } from 'jose'
 
 export async function middleware(req) {
-  const tkn = req.cookies.get('tkn')
+  console.log(req.nextUrl.pathname)
+  const tkn = req.cookies.get('tkn') ? req.cookies.get('tkn').value : undefined
   if (
     tkn === undefined &&
     req.nextUrl.pathname !== '/' &&

@@ -1,5 +1,6 @@
-import { verify } from 'jsonwebtoken'
+import jwt, { verify } from 'jsonwebtoken'
 import { pool } from '../../config/database'
+import { serialize } from 'cookie'
 
 export default async function handler(req, res) {
   if (req.method === 'POST' && req.body.mealId) {
@@ -39,6 +40,8 @@ async function getMeals({ req, res }) {
   return res?.status(200).json(result)
 }
 async function saveFav({ req, res }) {
+  const { tkn } = req.cookies
+
   try {
     const { userId, mealId } = req.body
 
@@ -55,6 +58,31 @@ async function saveFav({ req, res }) {
       'INSERT INTO favs_meals (user_id, meal_id) VALUES (?, ?)',
       [userId, mealId]
     )
+
+    // Actualizamos tambien el valor de la cookie
+    const userData = verify(tkn, process.env.PASS_SECRET)
+
+    const newFavs = [...userData.favs]
+
+    newFavs.push(Number(mealId))
+
+    const token = jwt.sign(
+      {
+        ...userData,
+        favs: newFavs
+      },
+      process.env.PASS_SECRET
+    )
+
+    const serialized = serialize('tkn', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/'
+    })
+
+    res.setHeader('Set-Cookie', serialized)
+
     return res?.status(200).json('Success saving the meal in your gallery')
   } catch (error) {
     console.log(error)
