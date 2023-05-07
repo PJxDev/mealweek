@@ -30,15 +30,12 @@ export default function AllMeals({ mealsData }) {
         userId: authorId,
         mealId: id
       })
-      console.log(result)
     } catch (error) {
-      console.log(error.message)
+      console.error(error.message)
       return
     }
     value.push(id)
     setFavs(value)
-
-    // console.log(mealsData.filter((el) => el.id === id))
   }
   const handleDelFav = async (e) => {
     let value = [...favs]
@@ -47,15 +44,13 @@ export default function AllMeals({ mealsData }) {
     if (id === -1) return
     try {
       const result = await axios.delete(`/api/${authorId}/${id}/my-gallery`)
-      console.log(result)
     } catch (error) {
-      console.log(error.message)
+      console.error(error.message)
       return
     }
     value[idx] = 0
     value = value.filter((el) => el !== 0).flat()
     setFavs(value)
-    console.log(value)
   }
 
   return (

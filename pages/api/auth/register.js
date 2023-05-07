@@ -12,7 +12,6 @@ async function createUser({ req, res }) {
     const { email, username, password } = req?.body
 
     const hashedPass = encryptPassword(password)
-    console.log(pool)
 
     await pool.query(
       'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
@@ -21,7 +20,7 @@ async function createUser({ req, res }) {
 
     return res?.status(200).json('Success creating the credentials')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     if (error.errno === 1062) {
       return res?.status(400).json('Username or email alredy registered.')
     }

@@ -10,7 +10,6 @@ export default async function handler(req, res) {
 async function deletePlan({ req, res }) {
   try {
     const planId = req.query.id
-    console.log(planId)
 
     const [result] = await pool.query(
       'DELETE FROM plannings WHERE planning_id=?',
@@ -18,7 +17,7 @@ async function deletePlan({ req, res }) {
     )
     return res?.status(200).json('Success deleting the planning')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return res?.status(403).json(error.message)
   }
 }

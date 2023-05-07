@@ -24,7 +24,6 @@ export default function MyGallery({ myPlannings: data }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(listPlannings)
       if (authorId !== undefined) {
         const result = await axios.post('/api/plannings', { authorId })
         setListPlannings(result.data)
@@ -45,13 +44,12 @@ export default function MyGallery({ myPlannings: data }) {
     if (option) {
       try {
         const result = await axios.delete(`/api/${planId}/my-plannings`)
-        console.log(result)
         window.alert('The planning has been deleted succesfully!')
         value[idx] = 0
         value = value.filter((el) => el !== 0).flat()
         setListPlannings(value)
       } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
       }
       setDataChanged(true)
     }
@@ -59,7 +57,6 @@ export default function MyGallery({ myPlannings: data }) {
   const handleSendPlan = (e) => {
     const id = e.target.id
     const [value] = listPlannings.filter((el) => el.id === Number(id))
-    console.log(value.plan)
     setPlanningData(value.plan)
     Router.push('/editor')
   }

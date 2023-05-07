@@ -19,7 +19,7 @@ async function savePlanning({ req, res }) {
 
     return res?.status(200).json('Success saving the planning')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     if (error.errno === 1062) {
       return res?.status(400).json('The planning exists already.')
     }
@@ -41,7 +41,7 @@ async function getPlannings({ req, res }) {
       })
     )
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return res?.status(403).json('There was a problem getting the planning.')
   }
 }

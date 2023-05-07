@@ -2,6 +2,7 @@ import Layout from '../layout'
 import styles from '../../styles/index.module.css'
 import useCookieData from '@/hooks/useCookieData'
 import { verify } from 'jsonwebtoken'
+import axios from 'axios'
 
 export default function PlanningEditor({ mealData, userData }) {
   useCookieData(userData)
@@ -41,8 +42,8 @@ export async function getServerSideProps(context) {
   }
   const mealId = context.query.id
   try {
-    const result = await fetch(`${process.env.DOMAIN}/api/${mealId}/meals`)
-    const mealData = await result.json()
+    const result = await axios.get(`${process.env.DOMAIN}/api/${mealId}/meals`)
+    const mealData = result.data
     return {
       props: {
         mealData,

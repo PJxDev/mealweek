@@ -19,7 +19,7 @@ async function createIngredients({ req, res }) {
     )
     return res?.status(200).json('Success creating the ingredient')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     if (error.errno === 1062) {
       return res?.status(403).json('The ingredient exists already.')
     }

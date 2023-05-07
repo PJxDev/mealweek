@@ -20,7 +20,6 @@ export async function getServerSideProps(context) {
   const { tkn } = context.req.cookies
   if (tkn) {
     const userData = verify(tkn, process.env.PASS_SECRET)
-    console.log(userData.id)
     return { props: { userData } }
   }
   return { props: {} }

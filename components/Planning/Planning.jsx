@@ -33,8 +33,6 @@ export default function Planning({ userData }) {
     }
   }, [])
 
-  console.log('userdata', userData)
-
   const configFavs = async (id) => {
     const result = await axios.post('/api/my-gallery', { userId: id })
     const value = result.data.map((meal) => {

@@ -14,14 +14,11 @@ async function deleteFav({ req, res }) {
   try {
     const userId = req.query.id
     const mealId = req.query.mealId
-    console.log(userId, mealId)
 
     const [result2] = await pool.query(
       'DELETE FROM favs_meals WHERE user_id=? AND meal_id=?',
       [userId, mealId]
     )
-    console.log(req.body)
-    console.log(result2)
     // Actualizamos tambien el valor de la cookie
     const userData = verify(tkn, process.env.PASS_SECRET)
 
@@ -36,7 +33,7 @@ async function deleteFav({ req, res }) {
     const serialized = serialize('tkn', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/'
     })
 
@@ -44,7 +41,7 @@ async function deleteFav({ req, res }) {
 
     return res?.status(200).json('Success deleting the meal in your gallery')
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return res?.status(403).json(error.message)
   }
 }

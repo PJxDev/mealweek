@@ -25,7 +25,6 @@ export default function FormLogin() {
       Router.push('/login')
     } catch (e) {
       console.error(e)
-      console.log(e)
       setResult({ data: e.response.data })
     }
   }

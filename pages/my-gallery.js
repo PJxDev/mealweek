@@ -3,6 +3,7 @@ import styles from '../styles/index.module.css'
 import MyGallery from '@/components/MyGallery/MyGallery'
 import { verify } from 'jsonwebtoken'
 import useCookieData from '@/hooks/useCookieData'
+import axios from 'axios'
 
 export default function MyGalleryPage({ data, ingredients, userData }) {
   useCookieData(userData)
@@ -22,18 +23,13 @@ export async function getServerSideProps(context) {
   try {
     const { tkn } = context.req.cookies
     const userData = verify(tkn, process.env.PASS_SECRET)
-    console.log(userData.id)
-    const result = await fetch(`${process.env.DOMAIN}/api/my-gallery`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userId: userData.id })
+    const result = await axios.post(`${process.env.DOMAIN}/api/my-gallery`, {
+      userId: userData.id
     })
-    const data = await result.json()
+    const data = result.data
 
-    const result2 = await fetch(`${process.env.DOMAIN}/api/ingredients`)
-    const ingredients = await result2.json()
+    const result2 = await axios(`${process.env.DOMAIN}/api/ingredients`)
+    const ingredients = await result2.data
     return {
       props: {
         data,
