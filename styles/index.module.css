@@ -3,6 +3,12 @@
   place-items: center;
   padding: 2rem;
   min-height: 80vh;
+  --display: grid;
+  --direction: unset;
+  --gallery-width: 60%;
+  --gallery-bg: var(--color-primary);
+  --gallery-color: var(--color-white);
+  --gallery-border: 1px solid var(--color-black);
 }
 
 .container {
@@ -10,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  max-width: 60%;
+  max-width: 50%;
   text-align: left;
   min-height: 60%;
   gap: 2rem;

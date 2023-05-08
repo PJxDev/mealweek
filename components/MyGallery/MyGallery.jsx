@@ -83,6 +83,7 @@ export default function MyGallery({ data, ingredients }) {
 
   return (
     <div className={styles.container}>
+      <h2>My Gallery</h2>
       <section>
         {data &&
           data.map((meal) => {
@@ -92,7 +93,7 @@ export default function MyGallery({ data, ingredients }) {
                   adding.state === false &&
                   (favs.includes(meal.id) ? (
                     <button
-                      style={{ fontSize: '1rem' }}
+                      className={styles.favButton}
                       id={meal.id}
                       onClick={handleDelFav}
                     >
@@ -100,19 +101,27 @@ export default function MyGallery({ data, ingredients }) {
                     </button>
                   ) : (
                     <button
-                      style={{ fontSize: '1rem' }}
+                      className={styles.favButton}
                       id={meal.id}
                       onClick={handleAddFav}
                     >
                       🤍
                     </button>
                   ))}
-                <h3>{meal.name}</h3>
-                <span>{meal.icon}</span>
-                <h6>{meal.composition}</h6>
+                <div className={styles.mealContent}>
+                  <header>
+                    <h3>{meal.name}</h3>
+                  </header>
+                  <span>{meal.icon}</span>
+                  <h4>&#10070; {meal.composition}</h4>
+                </div>
                 {adding.state && (
-                  <button id={meal.id} onClick={handleMealSelect}>
-                    ⏪
+                  <button
+                    className={styles.addButton}
+                    id={meal.id}
+                    onClick={handleMealSelect}
+                  >
+                    &#10157;
                   </button>
                 )}
               </article>

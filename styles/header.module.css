@@ -5,6 +5,11 @@
   align-items: flex-end;
   padding: 1rem 3rem;
   border-bottom: 1px solid black;
+  --size-hover: 1.4rem;
+}
+
+.container a:hover {
+  text-decoration: underline;
 }
 
 .logo,
@@ -39,4 +44,5 @@
 
 .logo {
   cursor: pointer;
+  user-select: none;
 }

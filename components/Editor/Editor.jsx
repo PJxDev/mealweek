@@ -41,8 +41,7 @@ export default function Editor({ data }) {
         </section>
       </article>
       <article ref={listRef} id='list' className={styles.planningContainer}>
-        <div className={styles.shoppingListContainer}>
-          <h2>My Gallery</h2>
+        <div className={styles.myGalleryContainer}>
           <MyGallery data={data} />
         </div>
       </article>

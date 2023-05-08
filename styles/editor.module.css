@@ -6,11 +6,10 @@
     'a a c';
   gap: 2rem;
   max-width: 100rem;
+  font-family: var(--font-text);
+  font-weight: 300;
 }
 
-.container :nth-child(1) {
-  grid-area: a;
-}
 .container :nth-child(2) {
   grid-area: b;
 }
@@ -22,27 +21,89 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem;
-  border: 2px solid orange;
-  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
   max-width: 1280px;
+  height: 100%;
+  border: 1px solid var(--color-black);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  --display: flex;
+  --direction: column;
+}
+
+.planningContainer:nth-child(2) {
+  background-color: var(--color-primary);
+}
+
+.planningContainer h2 {
+  font-family: var(--font-header);
+  font-weight: 100;
 }
 
 .planningCards {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 2rem;
-  border: 2px solid blueviolet;
   flex-wrap: wrap;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
 }
 
-.shoppingListContainer {
+.myGalleryContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 2rem;
-  max-width: 600px;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  --gallery-width: 100%;
+  --gallery-bg: var(--color-white);
+  --gallery-color: var(--color-black);
+  --gallery-border: transparent;
+}
+.myGalleryContainer section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .container :nth-child(1) {
+    grid-area: a;
+  }
+  .container {
+    grid-template-areas:
+      'a a'
+      'a a'
+      'b c'
+      'b .'
+      'b .';
+  }
+}
+@media (max-width: 645px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .planningContainer {
+    width: 100%;
+  }
+  .myGalleryContainer section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

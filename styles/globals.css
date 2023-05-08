@@ -63,6 +63,7 @@ body {
   --font-header: Titan, system-ui, 'Helvetica Neue', sans-serif;
   --font-text: Itim, system-ui, 'Helvetica Neue', sans-serif;
   --font-special: Architechs, system-ui, 'Helvetica Neue', sans-serif;
+  --size-hover: 1.5rem;
 }
 
 body {
@@ -78,10 +79,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: font-size 0.3s ease;
+  transition: text-decoration 1s ease, font-size 0.3s ease;
 }
 a:hover {
-  font-size: 1.5rem;
+  font-size: var(--size-hover);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -44,7 +44,7 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
               id={id}
               onClick={handleDelete}
             >
-              ❌
+              &#215;
             </button>
           ) : null}
         </header>
@@ -55,7 +55,7 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
           <section>
             {lunch === null || lunch === '' || lunch === undefined ? (
               <button id={id} className='lunch' onClick={handleAdd}>
-                ➕
+                &#43;
               </button>
             ) : null}
             <span>{lunch?.icon || ''}</span>
@@ -69,7 +69,7 @@ export default function PlanningCard({ idx: id, data, isEditting }) {
           <section>
             {dinner === null || dinner === '' || dinner === undefined ? (
               <button id={id} className='dinner' onClick={handleAdd}>
-                ➕
+                &#43;
               </button>
             ) : null}
             <span>{dinner?.icon || ''}</span>

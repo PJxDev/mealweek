@@ -1,4 +1,4 @@
-import styles from '../../styles/myGallery.module.css'
+import styles from '../../styles/listPlannings.module.css'
 import Buttons from '../Buttons/MyGalleryButtons'
 import axios from 'axios'
 import PlanningCard from '../Cards/PlanningCard'
@@ -62,32 +62,37 @@ export default function MyGallery({ myPlannings: data }) {
   }
   return (
     <div className={styles.container}>
+      <h2>My Plannings</h2>
       {listPlannings &&
         listPlannings.map((planning, idx) => {
           return (
-            <section style={{ border: '2px solid blue', padding: '2rem' }}>
-              <h1>Plan {planning.id}</h1>
-              <div>
-                <button id={planning.id} onClick={handleDeletePlan}>
-                  💔
-                </button>
-                <button id={planning.id} onClick={handleSendPlan}>
-                  &#8678;
-                </button>
-              </div>
-              {Array.isArray(planning.plan) ? (
-                planning.plan.map((day) => {
-                  return (
-                    <article>
-                      <PlanningCard data={day} />
-                    </article>
-                  )
-                })
-              ) : (
-                <article>
-                  <PlanningCard data={planning} />
-                </article>
-              )}
+            <section>
+              <header>
+                <h1>Plan {planning.id}</h1>
+                <div>
+                  <button id={planning.id} onClick={handleSendPlan}>
+                    &#10157;
+                  </button>
+                  <button id={planning.id} onClick={handleDeletePlan}>
+                    💔
+                  </button>
+                </div>
+              </header>
+              <article>
+                {Array.isArray(planning.plan) ? (
+                  planning.plan.map((day) => {
+                    return (
+                      <div className={styles.containerPlan}>
+                        <PlanningCard data={day} />
+                      </div>
+                    )
+                  })
+                ) : (
+                  <article>
+                    <PlanningCard data={planning} />
+                  </article>
+                )}
+              </article>
             </section>
           )
         })}
