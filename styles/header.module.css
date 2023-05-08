@@ -46,3 +46,62 @@
   cursor: pointer;
   user-select: none;
 }
+
+.burguerButton {
+  display: none;
+}
+.burguerMenu {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    display: none;
+  }
+  .burguerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .burguerButton div {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    background: var(--color-black);
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+  .burguerMenu[data-open='true'],
+  .burguerMenu[data-open='true'] .nav {
+    display: flex;
+  }
+  .burguerMenu[data-open='true'] > .nav {
+    flex-direction: column;
+  }
+
+  .burguerButton div:first-child[data-open='true'] {
+    transform: rotate(45deg);
+  }
+
+  .burguerButton div:nth-child(2) {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  .burguerButton div:nth-child(2)[data-open='true'] {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .burguerButton div:nth-child(3)[data-open='true'] {
+    transform: rotate(-45deg);
+  }
+}

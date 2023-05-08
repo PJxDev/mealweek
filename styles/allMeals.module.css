@@ -1,0 +1,137 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  border: 1px solid var(--color-black);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.container > h2 {
+  font-family: var(--font-header);
+  font-weight: 100;
+}
+.container > section {
+  display: var(--display);
+  flex-direction: var(--direction);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-text);
+  border: 1px solid var(--color-black);
+}
+
+.container > section > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid var(--color-black);
+  padding: 0.2rem;
+  max-width: 11rem;
+  text-align: center;
+}
+
+.favButton {
+  position: relative;
+  top: 0;
+  right: -60px;
+  font-size: 1rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 50%;
+  padding: 0.1rem;
+  transition: transform 0.1s ease;
+}
+.favButton:hover {
+  transform: scale(120%, 120%);
+  cursor: pointer;
+}
+
+.mealBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 7rem;
+  min-width: 9rem;
+}
+
+.mealBox header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-black);
+}
+
+.mealBox span {
+  border: 1px solid var(--color-black);
+  padding: 0.5rem;
+  font-size: 1.3rem;
+}
+.mealBox h2 {
+  font-size: 1.2rem;
+}
+
+.mealBox h4 {
+  font-weight: 100;
+}
+
+.mealBox > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.mealBox button {
+  border-radius: 50%;
+  border: 1px solid var(--color-black);
+  background: transparent;
+  line-height: 1;
+  aspect-ratio: 1;
+  padding: 0.1rem;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+}
+.mealBox button:hover {
+  transform: scale(110%);
+}
+
+@media (max-width: 811px) {
+  .container {
+    width: 100%;
+  }
+  .container section {
+    justify-items: center;
+  }
+  .mealBox {
+    width: 100%;
+  }
+}
+
+.addButton {
+  rotate: 180deg;
+  font-size: 2rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: transparent;
+  animation: addbutton infinite ease-out 1.5s;
+  border: 1px solid var(--color-black);
+  border-radius: 50%;
+  line-height: 0.8;
+}
+
+@keyframes addbutton {
+  50% {
+    color: #ffffff8c;
+  }
+}

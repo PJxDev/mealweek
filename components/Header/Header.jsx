@@ -4,7 +4,7 @@ import logo from '@/assets/img/logo.svg'
 import UserButton from '../UserButton/UserButton'
 import HeaderNav from './HeaderNav'
 import PlanningContext from '@/context/PlanningContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Link from 'next/link'
 
 export default function Header() {
@@ -20,6 +20,8 @@ export default function Header() {
     isLogged,
     setIsLogged
   } = useContext(PlanningContext)
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <header className={styles.container}>
       <Link href='/'>
@@ -31,6 +33,22 @@ export default function Header() {
           priority={true}
         />
       </Link>
+      <button
+        className={styles.burguerButton}
+        onClick={() => {
+          const value = !menuOpen
+          setMenuOpen(value)
+        }}
+      >
+        <div data-open={menuOpen}></div>
+        <div data-open={menuOpen}></div>
+        <div data-open={menuOpen}></div>
+      </button>
+      <div data-open={menuOpen} className={styles.burguerMenu}>
+        <button onClick={() => setMenuOpen(false)}>❌</button>
+        <UserButton className='user-button' />
+        <HeaderNav />
+      </div>
       {isLogged && <HeaderNav />}
       <UserButton className='user-button' />
     </header>
