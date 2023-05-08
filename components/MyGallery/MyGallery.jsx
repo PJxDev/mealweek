@@ -116,8 +116,12 @@ export default function MyGallery({ data, ingredients }) {
                   <h4>&#10070; {meal.composition}</h4>
                 </div>
                 {adding.state && (
-                  <button id={meal.id} onClick={handleMealSelect}>
-                    ⏪
+                  <button
+                    className={styles.addButton}
+                    id={meal.id}
+                    onClick={handleMealSelect}
+                  >
+                    &#10157;
                   </button>
                 )}
               </article>

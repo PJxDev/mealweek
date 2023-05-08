@@ -12,7 +12,7 @@ export default function MyGalleryButtons({ ingredients }) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.greenButton} onClick={handleCreate}>
+      <button className={styles.blueButton} onClick={handleCreate}>
         Create Meal
       </button>
       {modalShow ? (

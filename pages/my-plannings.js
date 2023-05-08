@@ -11,7 +11,6 @@ export default function MyPlannings({ myPlannings, userData }) {
     <>
       <Layout>
         <main className={styles.main}>
-          <h2>My Plannings</h2>
           <ListPlannings myPlannings={myPlannings} />
         </main>
       </Layout>
