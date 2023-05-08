@@ -11,8 +11,11 @@ export default function MyGalleryPage({ data, ingredients, userData }) {
     <>
       <Layout>
         <main className={styles.main}>
-          <h2>My Gallery</h2>
-          <MyGallery data={data} ingredients={ingredients} />
+          <MyGallery
+            className={styles.myGallery}
+            data={data}
+            ingredients={ingredients}
+          />
         </main>
       </Layout>
     </>

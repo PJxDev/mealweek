@@ -23,3 +23,9 @@
 .greenButton {
   background-color: var(--color-primary);
 }
+
+@media (max-width: 645px) {
+  .container {
+    align-self: center;
+  }
+}

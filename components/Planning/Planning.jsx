@@ -56,8 +56,8 @@ export default function Planning({ userData }) {
         </section>
       </article>
       <article ref={listRef} id='list' className={styles.planningContainer}>
+        <h2>List</h2>
         <div className={styles.shoppingListContainer}>
-          <h2>List</h2>
           <ShoppingList />
         </div>
       </article>

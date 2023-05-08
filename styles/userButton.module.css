@@ -15,8 +15,8 @@
 
 .container button {
   font-family: inherit;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-black);
   font-size: inherit;
   padding: 0.3rem;
   border-radius: 5px;
