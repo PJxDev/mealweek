@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-family: 'Titan one', sans-serif;
+  font-family: var(--font-header);
   font-size: 2rem;
   font-weight: normal;
 }
@@ -37,7 +37,7 @@
 }
 
 .listElement {
-  font-family: 'Itim', sans-serif;
+  font-family: var(--font-text);
   font-size: 1.3rem;
   color: var(--color-primary);
 }
@@ -51,10 +51,31 @@
   display: none;
 }
 .burguerMenu {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  visibility: hidden;
+  width: 50%;
+  gap: 4rem;
+  padding-top: 5rem;
+  position: absolute;
+  right: 100px;
+  opacity: 0;
+  background: var(--color-white);
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 800px) {
+.burguerMenu > nav {
+  display: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1150px) {
+  .container > div:last-of-type {
+    display: none;
+  }
   .nav {
     display: none;
   }
@@ -80,12 +101,27 @@
     position: relative;
     transform-origin: 1px;
   }
-  .burguerMenu[data-open='true'],
-  .burguerMenu[data-open='true'] .nav {
-    display: flex;
+  .burguerButton[data-open='true'] {
+    position: relative;
+    z-index: 12;
   }
+
   .burguerMenu[data-open='true'] > .nav {
+    display: flex;
+    opacity: 1;
+  }
+  .burguerMenu[data-open='true'] {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    right: 0;
+    z-index: 11;
+    height: 100%;
+  }
+  .burguerMenu[data-open='true'] > .nav > ul {
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .burguerButton div:first-child[data-open='true'] {
@@ -103,5 +139,29 @@
 
   .burguerButton div:nth-child(3)[data-open='true'] {
     transform: rotate(-45deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .burguerMenu {
+    padding-top: 10rem;
+  }
+}
+@media (max-width: 500px) {
+  .burguerButton {
+    position: relative;
+    top: 8px;
+    right: 1px;
+  }
+  .burguerButton[data-open='true'] {
+    position: fixed;
+    top: 91px;
+    right: 44px;
+  }
+  .burguerMenu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10rem;
   }
 }

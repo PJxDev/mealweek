@@ -35,6 +35,7 @@ export default function Header() {
       </Link>
       <button
         className={styles.burguerButton}
+        data-open={menuOpen}
         onClick={() => {
           const value = !menuOpen
           setMenuOpen(value)
@@ -45,12 +46,11 @@ export default function Header() {
         <div data-open={menuOpen}></div>
       </button>
       <div data-open={menuOpen} className={styles.burguerMenu}>
-        <button onClick={() => setMenuOpen(false)}>❌</button>
-        <UserButton className='user-button' />
+        <UserButton className={styles.userButton} />
         <HeaderNav />
       </div>
       {isLogged && <HeaderNav />}
-      <UserButton className='user-button' />
+      <UserButton className={styles.userButton} />
     </header>
   )
 }

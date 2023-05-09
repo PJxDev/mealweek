@@ -1,5 +1,5 @@
 import Layout from '../layout'
-import styles from '../../styles/index.module.css'
+import styles from '@/styles/meals.module.css'
 import useCookieData from '@/hooks/useCookieData'
 import { verify } from 'jsonwebtoken'
 import axios from 'axios'
@@ -12,20 +12,30 @@ export default function PlanningEditor({ mealData, userData }) {
         <main className={styles.main}>
           {mealData && (
             <article className={styles.container}>
-              <h1>{mealData.name}</h1>
-              <span>{mealData.icon}</span>
-              <p>{mealData.description}</p>
-              <h4>{mealData.composition}</h4>
-              <ul>
-                {mealData.ingredients &&
-                  mealData.ingredients.map((ingredient, idx) => {
-                    return (
-                      <li
-                        key={idx}
-                      >{`${ingredient.name} ${ingredient.quantity}${ingredient.type}`}</li>
-                    )
-                  })}
-              </ul>
+              <header>
+                <h1>{mealData.name}</h1>
+                <span>{mealData.icon}</span>
+              </header>
+              <section className={styles.section}>
+                <p>{mealData.description}</p>
+                <div>
+                  <h4>Composición y/o alérgenos:</h4>
+                  <h4>{mealData.composition}</h4>
+                </div>
+                <div className={styles.list}>
+                  <h4>Lista de la compra</h4>
+                  <ul>
+                    {mealData.ingredients &&
+                      mealData.ingredients.map((ingredient, idx) => {
+                        return (
+                          <li
+                            key={idx}
+                          >{`${ingredient.name} ${ingredient.quantity} ${ingredient.type}`}</li>
+                        )
+                      })}
+                  </ul>
+                </div>
+              </section>
             </article>
           )}
         </main>
