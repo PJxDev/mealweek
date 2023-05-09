@@ -11,7 +11,6 @@ export default function PlanningEditor({ mealsData, userData }) {
     <>
       <Layout>
         <main className={styles.main}>
-          <h2>All Meals</h2>
           <AllMeals mealsData={mealsData} />
         </main>
       </Layout>

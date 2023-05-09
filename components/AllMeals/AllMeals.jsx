@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import styles from '../../styles/myGallery.module.css'
+import styles from '../../styles/allMeals.module.css'
 import Router from 'next/router'
 import axios from 'axios'
 import PlanningContext from '@/context/PlanningContext'
@@ -55,6 +55,8 @@ export default function AllMeals({ mealsData }) {
 
   return (
     <div className={styles.container}>
+      <h2>All Meals</h2>
+
       <section>
         {mealsData &&
           mealsData.map((meal) => {
@@ -63,31 +65,21 @@ export default function AllMeals({ mealsData }) {
                 <h2>{meal.name}</h2>
                 <span>{meal.icon}</span>
                 <h4>{meal.composition}</h4>
-                <button
-                  style={{ fontSize: '1rem' }}
-                  id={meal.id}
-                  onClick={handleMoreInfo}
-                >
-                  👁
-                </button>
+                <div>
+                  <button id={meal.id} onClick={handleMoreInfo}>
+                    🔍
+                  </button>
 
-                {favs && favs.includes(meal.id) ? (
-                  <button
-                    style={{ fontSize: '1rem' }}
-                    id={meal.id}
-                    onClick={handleDelFav}
-                  >
-                    💗
-                  </button>
-                ) : (
-                  <button
-                    style={{ fontSize: '1rem' }}
-                    id={meal.id}
-                    onClick={handleAddFav}
-                  >
-                    🤍
-                  </button>
-                )}
+                  {favs && favs.includes(meal.id) ? (
+                    <button id={meal.id} onClick={handleDelFav}>
+                      💗
+                    </button>
+                  ) : (
+                    <button id={meal.id} onClick={handleAddFav}>
+                      🤍
+                    </button>
+                  )}
+                </div>
               </article>
             )
           })}
