@@ -20,20 +20,21 @@
   --color-border: #000;
   --color-font: #000;
   --color-font2: #fafafa;
+  --color-burger: #000;
 }
 
 /* dark theme*/
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #0fab27;
+    --color-primary: #1ac13d;
     --color-secondary: #0f74b1;
     --color-red: #e42424;
     --color-bg: #2c2c2c;
-    --color-bg-box: #60996d;
+    --color-bg-box: #f0f0f0;
     --color-border: #2c2c2c;
-    --color-font: #f0f0f0;
+    --color-font: #2c2c2c;
     --color-font2: #f0f0f0;
-    --color-green-dark: #99e6aa;
+    --color-burger: #f0f0f0;
   }
 }
 
