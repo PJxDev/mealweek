@@ -62,7 +62,7 @@
   position: absolute;
   right: 100px;
   opacity: 0;
-  background: var(--color-white);
+  background: var(--color-bg);
   transition: all 0.3s ease;
 }
 
@@ -96,7 +96,7 @@
     width: 2rem;
     height: 0.25rem;
     border-radius: 10px;
-    background: var(--color-black);
+    background: var(--color-burger);
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;

@@ -13,8 +13,8 @@
   width: 10rem;
   line-height: 1.2;
   padding: 0.7rem;
-  color: var(--color-white);
-  border: 1px solid var(--color-black);
+  color: var(--color-font2);
+  border: 1px solid var(--color-border);
   transition: transform 0.1s ease;
 }
 .container button:hover {

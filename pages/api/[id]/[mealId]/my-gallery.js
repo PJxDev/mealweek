@@ -19,7 +19,6 @@ async function deleteFav({ req, res }) {
       'DELETE FROM favs_meals WHERE user_id=? AND meal_id=?',
       [userId, mealId]
     )
-    // Actualizamos tambien el valor de la cookie
     const userData = verify(tkn, process.env.PASS_SECRET)
 
     const token = jwt.sign(

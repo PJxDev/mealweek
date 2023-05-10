@@ -23,16 +23,6 @@ export default function Planning({ userData }) {
   const planningRef = useRef()
   const listRef = useRef()
 
-  useEffect(() => {
-    if (userData) {
-      configFavs(userData.id)
-      setAuthorId(userData.id)
-      setIsLogged(true)
-    } else {
-      setIsLogged(false)
-    }
-  }, [])
-
   const configFavs = async (id) => {
     const result = await axios.post('/api/my-gallery', { userId: id })
     const value = result.data.map((meal) => {
