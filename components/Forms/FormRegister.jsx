@@ -54,7 +54,7 @@ export default function FormLogin() {
       />
       <button>Register</button>
       {result && (
-        <h2 style={{ color: 'var(--color-black)' }}>{`${result.data}`}</h2>
+        <h2 style={{ color: 'var(--color-font)' }}>{`${result.data}`}</h2>
       )}
     </form>
   )

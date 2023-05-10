@@ -7,11 +7,11 @@
   gap: 1.5rem;
   padding: 2rem;
   margin: auto;
-  border: 2px solid #000;
+  border: 2px solid var(--color-border);
   border-radius: 15px;
-  background-color: #fff;
+  background-color: var(--color-bg);
   font-size: 1.3rem;
-  font-family: 'Itim', sans-serif;
+  font-family: var(--font-text);
 }
 
 .container input {
@@ -20,7 +20,7 @@
   height: 3rem;
   width: 60%;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid var(--color-border);
   text-align: center;
 }
 .container textarea {
@@ -29,7 +29,7 @@
   height: 15rem;
   width: 60%;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid var(--color-border);
   text-align: center;
   padding: 0.5rem;
 }
@@ -51,21 +51,21 @@
 
 .redButton {
   font-size: 1.5rem;
-  font-family: 'Itim', sans-serif;
+  font-family: var(--font-text);
   width: 10rem;
   line-height: 1.2;
   padding: 0.7rem;
-  color: #fff;
+  color: var(--color-font2);
   background-color: var(--color-red);
 }
 
 .greenButton {
   font-size: 1.5rem;
-  font-family: 'Itim', sans-serif;
+  font-family: var(--font-text);
   width: 10rem;
   line-height: 1.2;
   padding: 0.7rem;
-  color: #fff;
+  color: var(--color-font2);
   background-color: var(--color-primary);
 }
 
@@ -77,7 +77,7 @@
   align-items: center;
   gap: 1rem;
   max-width: 60%;
-  border: 2px solid #000;
+  border: 2px solid var(--color-border);
   border-radius: 10px;
   padding: 1rem;
 }
@@ -103,7 +103,7 @@
   border-radius: 50%;
   height: 35px;
   width: 35px;
-  border: 2px var(--color-secondary) solid;
+  border: 2px solid var(--color-secondary);
 }
 
 .composition {
@@ -127,7 +127,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border: 2px solid #000;
+  border: 2px solid var(--color-border);
   border-radius: 10px;
   padding: 0.5rem;
   max-width: 60%;
@@ -140,7 +140,7 @@
   height: 1.3rem;
   font-size: 1.3rem;
   font-weight: 600;
-  background-color: #fff;
+  background-color: var(--color-bg);
   border-radius: 50%;
   line-height: 0;
   color: var(--color-red);
@@ -216,7 +216,7 @@
   text-align: center;
   border-radius: 10px;
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-font2);
 }
 .dialogButtons button:nth-child(2) {
   background-color: var(--color-secondary);
@@ -242,7 +242,7 @@
   height: 1.3rem;
   font-size: 1.3rem;
   font-weight: 600;
-  background-color: #fff;
+  background-color: var(--color-bg);
   border-radius: 50%;
   line-height: 0.9;
   color: var(--color-red);

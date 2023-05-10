@@ -10,40 +10,32 @@
   font-family: Itim;
   src: url(../assets/fonts/Itim.woff2);
 }
+:root {
+  --color-primary: #1ac13d;
+  --color-secondary: #1a91c6;
+  --color-red: #ec3939;
+  /* --color-white: #fafafa; */
+  --color-bg: #fafafa;
+  --color-bg-box: #fafafa;
+  --color-border: #000;
+  --color-font: #000;
+  --color-font2: #fafafa;
+}
 
-/* dark theme
- @media (prefers-color-scheme: dark) {
+/* dark theme*/
+@media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
+    --color-primary: #0fab27;
+    --color-secondary: #0f74b1;
+    --color-red: #e42424;
+    --color-bg: #2c2c2c;
+    --color-bg-box: #60996d;
+    --color-border: #2c2c2c;
+    --color-font: #f0f0f0;
+    --color-font2: #f0f0f0;
+    --color-green-dark: #99e6aa;
   }
-}*/
+}
 
 * {
   box-sizing: border-box;
@@ -55,27 +47,15 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  --color-primary: #1ac13d;
-  --color-secondary: #1a91c6;
-  --color-red: #ec3939;
-  --color-white: #fff;
-  --color-black: #000;
+
   --font-header: Titan, system-ui, 'Helvetica Neue', sans-serif;
   --font-text: Itim, system-ui, 'Helvetica Neue', sans-serif;
   --font-special: Architechs, system-ui, 'Helvetica Neue', sans-serif;
   --size-hover: 1.5rem;
 }
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--color-bg);
 }
-
 a {
   color: inherit;
   text-decoration: none;

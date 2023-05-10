@@ -7,8 +7,8 @@
   --direction: unset;
   --gallery-width: 60%;
   --gallery-bg: var(--color-primary);
-  --gallery-color: var(--color-white);
-  --gallery-border: 1px solid var(--color-black);
+  --gallery-color: var(--color-font2);
+  --gallery-border: 1px solid var(--color-border);
 }
 
 .container {
@@ -61,7 +61,7 @@
   background-color: var(--color-secondary);
   padding: 2rem;
   border-radius: 20px;
-  color: var(--color-white);
+  color: var(--color-font2);
   font-family: var(--font-text);
   font-size: 1.5rem;
 }
@@ -112,7 +112,7 @@
 }
 
 .banner span {
-  color: var(--color-black);
+  color: var(--color-font);
 }
 
 .banner a {

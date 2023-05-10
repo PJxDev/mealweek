@@ -35,12 +35,12 @@ const PDFButton = ({ refs }) => {
           backgroundColor: 'var(--color-primary)',
           width: '10rem',
           padding: '0.7rem',
-          fontFamily: 'Itim',
+          fontFamily: 'var(--font-text)',
           fontSize: '1.5rem',
           lineHeight: '1.2',
           textAlign: 'center',
-          color: '#fff',
-          border: '1px solid #4a4a4a'
+          color: 'var(--color-font2)',
+          border: '1px solid var(color-black)'
         }}
         onClick={generateImage}
       >
