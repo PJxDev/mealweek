@@ -5,6 +5,7 @@ import Buttons from '../Buttons/PlanningButtons'
 import { useContext, useEffect, useRef } from 'react'
 import PlanningContext from '@/context/PlanningContext'
 import axios from 'axios'
+import { useReactToPrint } from 'react-to-print'
 
 export default function Planning({ userData }) {
   const {

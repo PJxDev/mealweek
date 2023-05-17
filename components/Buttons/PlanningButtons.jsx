@@ -4,6 +4,7 @@ import Router from 'next/router'
 import dynamic from 'next/dynamic'
 import styles from '../../styles/buttons.module.css'
 import axios from 'axios'
+import { useReactToPrint } from 'react-to-print'
 
 export default function PlanningButtons({ refs }) {
   const {
@@ -24,6 +25,10 @@ export default function PlanningButtons({ refs }) {
   const handleEdit = () => {
     Router.push('/editor')
   }
+  const handlePrint = useReactToPrint({
+    content: () => refs.planning.current,
+    pageStyle: 'landscape'
+  })
 
   return (
     <div className={styles.container}>
@@ -31,7 +36,9 @@ export default function PlanningButtons({ refs }) {
         Go Editor
       </button>
 
-      <PDFButton refs={refs} data={planningData} />
+      <button className={styles.greenButton} onClick={handlePrint}>
+        Save as PDF
+      </button>
     </div>
   )
 }

@@ -88,3 +88,18 @@
     justify-content: center;
   }
 }
+
+@media print {
+  @page {
+    size: 297mm 420mm;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container > div {
+    display: none;
+  }
+}
