@@ -20,8 +20,6 @@ export default function PlanningButtons({ refs }) {
     setIsLogged
   } = useContext(PlanningContext)
 
-  const PDFButton = dynamic(() => import('./PDFButton.jsx'), { ssr: false })
-
   const handleEdit = () => {
     Router.push('/editor')
   }
