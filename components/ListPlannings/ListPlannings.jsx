@@ -68,7 +68,7 @@ export default function MyGallery({ myPlannings: data }) {
           return (
             <section>
               <header>
-                <h1>Plan {planning.id}</h1>
+                <h1>Plan {idx + 1}</h1>
                 <div>
                   <button id={planning.id} onClick={handleSendPlan}>
                     &#10157;
