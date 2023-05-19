@@ -1,3 +1,5 @@
+![Logo](./assets/img/logo.svg)
+
 ## Getting Started
 
 Para comenzar con la simulación en local:
